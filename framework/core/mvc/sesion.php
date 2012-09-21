@@ -9,6 +9,6 @@ $vars[url]=$sessD[0];
 $vars[SSID]=$sessD[1];
 
 ### compruebo admintemporal
-if($vars[SSID]=="vero"){$vars[MODadmin]=true;}else{$vars[MODadmin]=true;};
+if($vars[SSID]=="vero"){$vars[MODadmin]=true;}else{$vars[MODadmin]=FALSE;};
 
 ?>
