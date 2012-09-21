@@ -1,0 +1,112 @@
+<!-- layout -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+	
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+%metas%
+
+
+
+%styles%
+
+%javascriptFiles%
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+
+<style>.iconos{background-image: url('%urlIconos%');}</style>
+</head>
+<body>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=269516055467";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//alert("codigo: " + self.document.location.hash.substring(1));
+
+
+
+</script>
+
+
+	
+	
+	
+%SocialNavigation%
+
+
+
+<div class="BackPage">
+
+<div class="page">
+
+
+
+
+
+
+<div class="marg_sup CBfnd"></div>
+
+<div class="bordeNegro_sup">
+	
+
+	%titulolistcursos%
+
+	
+	<div style="float:right;"><a href="http://cursodecursos.com/cursos_de_prevencion_de_riesgos_laborales.html"><img src="%urlLogo%" border="0"></a></div>
+	
+</div>
+
+
+
+
+
+
+
+<div style="position: relative; margin-top: 10px;">
+
+<div style="position:relative; float:left; width: 622px; margin-left:10px;">
+%listadoCursos%
+</div>
+
+<div style="position:relative; float:left; width: 248px; margin-left:10px;">
+
+%CatsRelacionadas%
+
+%GeoLocalizacion%
+
+%BloqueGeografico%
+
+%BloqueTipos%
+</div>
+
+<div style="clear:both;"></div>
+
+</div>
+
+
+
+<div class="pagination_bar">
+	%CatPagination%
+</div>
+
+
+%footer%
+
+
+</div>
+</div>
+
+</body>
+</html>
+
+<!-- fin layout -->

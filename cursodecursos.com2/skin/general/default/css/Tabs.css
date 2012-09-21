@@ -1,0 +1,37 @@
+	
+.ContenedorNav {position:fixed;top:50%;left:50%;margin-top:-60px;margin-left:200px;width:290px;height:300px;}
+	
+.CadaTabTOT{z-index:0; position: absolute;}
+.CadaTAB{position: absolute;  visibility:hidden;}	
+	
+.CabTab {width:256px;height:35px}
+	
+.ContTAB 	{width:265px;padding-top:5px;}
+.pieContTab {width:265px;padding-top:5px; background-position: 0 -86px; background-repeat: no-repeat;height:5px;}
+
+
+.IntTAB	{ margin-left:5px;  width:246px; }			
+.Cont_IntTAB{ position:absolute;}	
+ .TABvacio	{ position:relative; margin-left:10px; margin-top:40px; width:225px;}
+ .TABarrowD	{ position:relative; float:left; width:28px; height:41px; background-position: -173px 0px; margin-top:3px;}
+ .TABtxt	{ position:relative; float:left; width:180px; text-align:left; font-size:12px; margin-left:5px; }
+ .botComp	{ position:relative; width:80px; height:30px; background-position: 0 -17px; margin-left:80px; margin-top:12px;}
+
+.Cont_intTAB_lineacurso{ height:35px;}
+
+.Cont_intTAB_lineacurso .Logo { float:left;border: 1px solid #FFEDB7; }
+.Cont_intTAB_lineacurso .titulo { margin-left:5px;float:left; width:170px; font-family: Arial; font-size:10px; color:#666666; text-align:left; line-height:11px; }
+.Cont_intTAB_lineacurso .borrar { margin-left: 4px; margin-top: 1px; float:left; }
+.Cont_intTAB_lineacurso .borrar:hover {cursor:pointer; }
+
+.FaceTabL {position:relative; float:left; width:100px; padding:10px;}
+.FaceTabR {position:relative; float:left; width:100px; height:120px; padding:2px;}
+	
+	
+
+.TABsombra	{background-position: -120px 0;width:45px;height:40px;position: absolute; left:250px;z-index:-1;}
+		
+		
+		
+
+.loadding{position:absolute; width:246px; height:100px; background: url('/images/tools/loading.gif') no-repeat scroll 115px 60px transparent; z-index:20;}		

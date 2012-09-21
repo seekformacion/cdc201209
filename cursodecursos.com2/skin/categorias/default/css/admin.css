@@ -1,0 +1,49 @@
+.edit_textcat {
+visibility:hidden;
+position:absolute;
+width:847px; height:106px;top:17px;
+
+	
+	
+}
+
+.bot_edit_textcat {margin-left:793px;margin-top:5px;}
+.boton_editar {
+  text-align:center;
+  color:blue;
+  font-family:Arial;
+  font-size:10px;
+  width:52px;
+  border:1px blue solid;
+  font-weight:bold; cursor:pointer;
+}
+
+.bot_guardar_textcat{margin-left:799px;margin-top:5px; visibility:hidden;}
+
+.Text_Cat_area{
+  height:105px;width:847px;
+  background-color:#ffffff;
+  font-family:Arial;
+  font-size:12px;
+  font-weight:normal;
+  color: #333333
+  } 
+
+.Text_area_desc_cvirtual {height:65px;width:487px;font-family:Arial; font-size:10px; font-weight:normal; border:0px; visibility:hidden;}
+.edita_cvirtual{
+  height:65px;
+  position:relative;
+  top:-125px;
+  width:487px;
+
+}
+.boton_save_cvir{ position:absolute;background:url('/skin/admin/save.gif'); height:15px;  left:480px;  position:relative;  top:-149px;  width:15px; cursor:pointer; visibility:hidden;}
+.boton_edit_cvir{ position:absolute;background:url('/skin/admin/edit.gif'); height:15px;  left:480px;  position:relative;  top:-134px;  width:15px; cursor:pointer;}
+.Text_area_tit_cvirtual{height:26px;width:487px;font-family:Arial; font-size:18px; font-weight:normal; border:0px; visibility:hidden; }
+.edita_tit_cvirtual{
+  height:26px;
+  position:relative;
+  top:-144px;
+  width:487px;
+	
+}

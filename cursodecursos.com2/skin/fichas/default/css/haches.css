@@ -1,0 +1,50 @@
+h1            {display:block; font-size:1.0em;text-decoration:none;margin:0em 0;}
+h2            {display:block; font-size:1.0em;text-decoration:none;margin:0em 0;}
+h3            {display:block; font-size:1.0em;text-decoration:none;margin:0em 0; font-weight:normal;}
+h4            {display:block; font-size:1.0em;text-decoration:none;margin:0em 0;}
+h5            {display:block; font-size:1.0em;text-decoration:none;margin:0em 0;}
+h6            {display:block; font-size:1.0em;text-decoration:none;margin:0em 0;}
+
+
+
+									
+
+h1   {	font-family:Arial; 
+		font-size:22px; 
+		text-decoration:none; font-weight: normal; 
+	}
+
+
+
+h2  {
+	margin-top:5px;
+    display: block;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none; }
+	
+h3  {
+    display: block;
+    font-family: Arial;
+    margin-bottom:10px; font-size:12px;
+    font-weight: normal;
+    text-decoration: none; }
+
+
+	
+h4  {
+	margin-top:5px;
+    display: block;
+    font-family: Arial;
+    font-size: 10px;
+    font-weight: normal;
+    text-decoration: none; }
+	
+h5  {
+	margin-top:5px;
+    display: block;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: normal;
+    text-decoration: none; }

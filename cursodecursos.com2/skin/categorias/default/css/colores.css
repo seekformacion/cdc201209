@@ -1,0 +1,47 @@
+
+/* definicion de colores */
+
+body	{background:none repeat scroll 0 0 #EFF9F7; }
+
+.CBfnd {background-color:#B5E7DE !important;} /* Color Base general */
+.CBc {color:#B5E7DE !important;}
+
+.CB2fnd {background-color:#297B73 !important;} /* Color base 2 aplicado a los bordes de cajas */
+.CB2c {color:#297B73 !important;}
+
+.CB3fnd {background-color:#A3E1D5 !important;} /* aplicado a las TABS */
+.CB3c {color:#A3E1D5 !important;}
+
+
+.CTfnd {background-color:#F5FBFB !important;} /* Color basetenue aplicado a los fondos de cajas*/
+.CTc { color:#F5FBFB !important;}
+
+/* colores textos */
+
+
+.TxtBLnc { color:#ffffff !important;} /* Color de texto base */
+.Txtc1 { color:#222222 !important;} /* Color de texto base */
+.Txtc2 { color:#666666 !important;} /* Color de texto base mas claro */
+.Txtc3 { color:#c46006 !important;} /* Color de texto RARO */
+
+.over .enlaceTitnav {color:#B5E7DE !important; text-decoration:none;} /* colores para en menunav como CBc */
+.out .enlaceTitnav {color:#F5FBFB !important; text-decoration:none;} /* colores para en menunav como CTc */
+
+
+
+
+.over .Titular_nav{color:#333333; }
+.over .Texto_nav{color:#333333;}
+.over .enlaceTitnav2 {color:#333333 !important; text-decoration:none;}
+
+.out {color:#cccccc;}
+.out .Titular_nav{color:#666666;}
+.out .Texto_nav{color:#666666;}
+.out .enlaceTitnav2 {color:#666666 !important; text-decoration:none;}
+
+
+
+.BackPage {background: url('/images/fondosGeneral/fondoPagina.png') repeat-y scroll 50% 0 ; min-width: 1000px;}
+
+
+/* definicion de colores */

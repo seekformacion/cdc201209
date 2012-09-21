@@ -1,0 +1,26 @@
+.Cont_BloqueGeografico { width :246px; padding-bottom: 20px; border: 1px solid; margin-bottom:15px;}
+.Tit_BloqueGeografico { margin: 15px 19px; }
+.List_BloqueGeografico { margin: 10px;}
+.List_BloqueGeografico ul { padding-left: 10px;}
+.List_BloqueGeografico li { font-size:10px; margin-bottom: 6px}
+
+.List_BloqueGeografico a { font-size:10px; text-decoration:none;}
+.List_BloqueGeografico a:hover { font-size:10px; text-decoration:underline; }
+
+
+
+
+
+.Cont_BloqueTipos { width :246px; padding-bottom: 20px; border: 1px solid; margin-bottom:15px;}
+.Tit_BloqueTipos { margin: 15px 19px; }
+.List_BloqueTipos { margin: 10px;}
+.List_BloqueTipos ul { padding-left: 10px;}
+.List_BloqueTipos li { font-size:10px; margin-bottom: 6px}
+
+.List_BloqueTipos a { font-size:10px; text-decoration:none;}
+.List_BloqueTipos a:hover { font-size:10px; text-decoration:underline; }
+
+
+.Cont_GeoLocalizacion { width :246px; padding-bottom: 20px; border: 1px solid; background: url('/images/fondosBanderas/valencia.gif') no-repeat right bottom; margin-bottom:15px;}
+.Tit_GeoLocalizacion { margin: 15px 19px; }
+

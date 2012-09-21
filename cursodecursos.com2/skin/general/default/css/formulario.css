@@ -1,0 +1,26 @@
+
+.gris_fondo 	{visibility:hidden;background-color:#333333;left:0;opacity:0.6;
+				position:fixed;top:0;width:100%;height:100%;z-index:211;
+				 -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=60)';filter: alpha(opacity=60);}
+				 
+.gris_up 		{visibility:hidden;position:fixed;top:50%;left:50%;z-index:311;
+				width:591px; height:366px;
+				margin-left:-300px; margin-top:-200px;
+				;}
+				
+/* bordesform */
+.form {background:url('/images/fondosGeneral/formulario/form.png'); }	
+
+.f-esi 		{ position:relative; float:left; width:29px; height:37px; background-position: 0px 0px; background-repeat: no-repeat;}
+.f-esibssup { position:relative; float:left; width:519px; height:37px; background-image:url('/images/fondosGeneral/formulario/bordesup.png');}
+.f-esd 		{ position:relative; float:left; width:43px; height:37px; background-position: -29px 0px; background-repeat: no-repeat;}
+
+.f-eii 		{ position:relative; float:left; width:34px; height:46px; background-position: 0px -37px; background-repeat: no-repeat;}
+.f-eiibssup { position:relative; float:left; width:513px; height:46px; background-image:url('/images/fondosGeneral/formulario/bordeinf.png');}
+.f-eid 		{ position:relative; float:left; width:43px; height:46px; background-position: -33px -37px; background-repeat: no-repeat;}
+
+
+.f-cont		{ width:100%; height:300px; background-image:url('/images/fondosGeneral/formulario/contenido.png');}
+
+
+.f-close 	{ position: relative; float: right; margin-top:15px; width:15px; height:15px; background-position: -72px 0px; background-repeat: no-repeat; cursor:pointer;}				

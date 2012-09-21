@@ -1,0 +1,48 @@
+
+
+<!-- cajacurso -->
+
+<div class="CajaCurso CTfnd CB2c">
+	
+	<div class="bloq_texto_cajacurso">
+	<h3 class="Txtc1" id="tit-%codcurso%">%titulo%</h3>
+		
+	<h5 class="Txtc3">>> %titCat% </h5>
+	
+	<h4 class="Txtc2" id="desc-%codcurso%">
+	%descripcion%
+	</h4>
+	
+	</div>	
+	
+	<div class="bloq_img_cajacurso">
+		<img class="logoCentListcat CB2c" src="/logos/medium/3456.jpg">
+	</div>
+	
+	<div class="borra"></div>
+	
+	<div class="iconos BotonListado"><a href="/cursos/curso_de_peluqueria_profesional.html" title="Curso de peluqueria profesional"><img src="/images/botones/masinfo.png"></a></div>
+	<div class="iconos BotonListado"><img src="/images/botones/comparar.png"></div>
+	
+	<input type="checkbox" name="compara-%codcurso%" id="compara-%codcurso%" class="checkbox_cajacurso" onchange="javascript:addCompare('%codcurso%','%idcat%');">
+
+<div class="borra"></div>
+%admin%
+</div>
+
+<!-- fin cajacurso -->
+
+<!-- cajacurso_admin -->
+
+
+<div class="edita_tit_cvirtual">
+	<textarea class="Text_area_tit_cvirtual" id="tit_cvirtual-%codcurso%" >%titulo%</textarea>
+</div>
+
+<div class="edita_cvirtual">
+<textarea class="Text_area_desc_cvirtual" id="desc_cvirtual-%codcurso%" >%descripcion%</textarea>
+</div>
+<div class="boton_edit_cvir" onclick="javascript:editcurvir('%codcurso%')" id="botedit-%codcurso%"></div>	
+<div class="boton_save_cvir" onclick="javascript:savecurvir('%codcurso%')" id="botsave-%codcurso%"></div>	
+
+<!-- fin cajacurso_admin -->

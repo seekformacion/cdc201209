@@ -1,0 +1,62 @@
+
+
+
+.ctnFichaSup	{position: relative; padding: 0px 10px 0px 15px; margin-top:10px;}
+
+.bloqIZQ			{float:left;width:686px;}
+.cabDes 			{margin-left:8px; margin-bottom:10px;position: relative;}
+.cajaDat			{float:left;width:185px; height:inherit; padding:10px;position: relative;}
+.InfCurLI    		{padding-left:0px; margin:0px; font-size:12px; list-style:none;}
+.InfCurLI li 		{margin-bottom:6px;}
+.cajaCent			{float:left;width:447px; height:inherit; padding:10px;margin-left:10px;position: relative;}
+.cajaOtrosDat		{float:left;width:664px;  padding:10px; margin-top:10px;position: relative;}
+.facilidades		{margin-top:10px; font-size: 11px;position: relative;}
+.facilidades .t1	{float:left; width:8px;}
+.facilidades .t2	{float:left;width: 672px;}
+
+.bloqDER		{float:right;width:174px;}
+
+
+.cajaLogo		{width:174px; height: 149px; background-color:#000000;}
+.cajaLogo img 	{border:1px solid #ffffff; margin-left:11px; margin-top:15px;}
+.cajaLogo .txt	{color:#ffffff; font-size: 11px; margin-left:11px; width:150px; margin-top: 21px; line-height:1.2;}
+
+.InfCurTXT   	{ margin-bottom:10px; font-size:12px;}
+
+
+.claves			{position: relative; margin-top: 10px; background-color:#000000; height:20px; text-align: center; font-family:Arial; font-size:16px; color:#ffffff; padding-top:5px;}
+.franjaCarpSup	{background-color:#000000; padding-left:10px;}
+
+
+.cabCarpFicha 	{float:left; width:232px; height:31px; background:url('/images/fondosGeneral/TopCarpCurso.gif') no-repeat ; 
+				font-family:Arial; font-size:14px; font-style:italic;
+				}
+.cabCarpFicha .tit{float:left;}				
+				
+.requi			{margin-left:28px; margin-top:9px;}
+.aquien			{margin-left:33px; margin-top:9px;}
+.paraq			{ margin-left:30px; margin-top:9px;}
+
+.FranjaFoto		{padding-left:10px; height:135px; padding-left:10px;}
+.cntCarpFicha	{float:left; width:202px; height:135px; background:url('/images/fondosGeneral/fondCarpCurso.png');
+				padding-left:16px; margin-top:0px; padding-right:14px; font-family: Arial; font-size:11px;line-height: 1.2;
+				}	
+.cntCarpFicha .tit {font-family: Arial; font-size:12px;}							
+.cntCarpFicha .val {font-family: Arial; font-size:11px; margin-bottom:8px;}
+
+.cD			{ background-position: -16px 0;background-repeat: no-repeat; margin-left:5px;width:15px; height:15px; float:left;}		
+.cL			{ background-position: 0 0;background-repeat: no-repeat; margin-right:4px;width:15px; height:15px; float:left;}
+
+.pieCarpFicha {background-color:#000000; padding-left:10px; height:34px;}
+.pieCarpFicha .fond {float:left; width:232px; height:29px; background:url('/images/fondosGeneral/BottCarpCurso.gif') no-repeat ;}
+
+.arrowdown			{width:15px; height:15px;margin-left:80px;
+					background-position: -31px 0;
+					background-repeat: no-repeat;
+					}
+
+
+
+
+
+

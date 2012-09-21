@@ -1,0 +1,142 @@
+
+Array
+(
+    [811502] => Array
+        (
+            [Titulo] => Programación para Android (Universidad Camilo José Cela)" size="70" onKeyUp="javascript:cambios();cambiotitulo();">idcurso:<span class="Titulo7">
+            [cur_id_curso_propio] => AND
+            [cur_otro_codigo1] => C11
+            [cur_otro_codigo2] => 
+            [cur_posidelcurso] => 0
+            [cur_id_tipocurso] => 3
+            [cur_id_metodo] => 7
+            [cur_titoficial] => 
+            [cur_precio] => 
+            [cur_mostarprecio] => 0
+            [cur_facilidad] => Centros presenciales<br>Formación semi-presencial y a distancia<br>Metodología guiada que facilita el aprendizaje<br>Horarios adaptados a las necesidades del alumno<br>Acceso gratuito a bolsa de empleo<br>Acuerdos con empresas para prácticas de alumnos (en cursos y FP)
+            [cur_practicas] => 
+            [cur_otrosdatos] => 
+            [cur_duracion] => 
+            [cur_descripcion] => ¿Eres programador y quieres especializarte en un área en expansión? Si tienes conocimientos de Java, aprender a programar para Android es tu mejor opción.
+            [cur_dirigidoa] => Conocimientos básicos de programación en Java
+            [cur_paraqueteprepara] => Con el curso de Programador para sistemas Android Master-D pone a tu disposición temarios 100% actualizados con las últimas novedades de Android y tutores online que resolverán todas tus dudas. Podrás estudiar a tu ritmo, desde donde quieras y cuando quieras gracias a nuestro sistema flexible.
+            [dondeimparte] => Array
+                (
+                    [0] => 
+115
+                    [1] => 
+114
+                    [2] => 
+83
+                    [3] => 
+117
+                    [4] => 
+118
+                    [5] => 
+105
+                    [6] => 
+113
+                    [7] => 
+104
+                    [8] => 
+101
+                    [9] => 
+109
+                    [10] => 
+119
+                    [11] => 
+120
+                    [12] => 
+111
+                    [13] => 
+121
+                    [14] => 
+98
+                    [15] => 
+122
+                    [16] => 
+97
+                    [17] => 
+110
+                    [18] => 
+123
+                    [19] => 
+132
+                    [20] => 
+124
+                    [21] => 
+85
+                    [22] => 
+125
+                    [23] => 
+126
+                    [24] => 
+127
+                    [25] => 
+128
+                    [26] => 
+96
+                    [27] => 
+86
+                    [28] => 
+95
+                    [29] => 
+130
+                    [30] => 
+93
+                    [31] => 
+108
+                    [32] => 
+107
+                    [33] => 
+87
+                    [34] => 
+106
+                    [35] => 
+89
+                    [36] => 
+88
+                )
+
+            [cur_edadmin] => 17
+            [cur_edadmax] => 50
+            [temario] => <br>
+
+<p><font color="#000000" size="3" face="Times New Roman"><strong>&iquest;Quieres especializarte en un &aacute;rea en expansi&oacute;n?</strong> Aprender a programar para Android es tu mejor opci&oacute;n. Master-D te da la opci&oacute;n de hacer su curso de Programador para sistemas Android con el que aprender&aacute;s una profesi&oacute;n muy demandada hoy en d&iacute;a debido al auge de los tel&eacute;fonos m&oacute;viles y otros dispositivos port&aacute;tiles, como Tablet PC, etc. </p>
+<font color="#000000" size="3" face="Times New Roman">
+<p><br />
+Ahora ya no es un problema si no tienes conocimientos de programaci&oacute;n, ya que Master-D te ofrece un curso gratuito de Java opcional para todos aquellos que necesitan una formaci&oacute;n adicional en esta materia.</p>
+<p>Con el curso de Programador para sistemas Android Master-D pone a tu disposici&oacute;n temarios 100% actualizados con las &uacute;ltimas novedades de Android y tutores online que resolver&aacute;n todas tus dudas. Podr&aacute;s estudiar a tu ritmo, desde donde quieras y cuando quieras gracias a nuestro sistema flexible. </p>
+<p>En Master-D, te ayudamos a encontrar trabajo gracias a nuestra bolsa de empleo y a la posibilidad de hacer pr&aacute;cticas en empresas del sector. Una vez finalizado nuestro curso de Android, estar&aacute;s preparado para trabajar realizando proyectos de desarrollo para m&oacute;viles con Android, as&iacute; como realizando proyectos tecnol&oacute;gicos. </p>
+<p>Si haces nuestro curso de Android, aprender&aacute;s a desarrollar aplicaciones para Android que podr&aacute;s promocionar en Market, la tienda de aplicaciones de Android que esta alcanzando a pasos vertiginosos a la App Store de Apple. </p>
+<p>Aprende a programar Android para m&oacute;viles, un sector en continuo crecimiento. Adem&aacute;s aprender&aacute;s el funcionamiento del entorno de desarrollo Eclipse para dise&ntilde;ar aplicaciones en Java para m&oacute;viles Android. Tambi&eacute;n aprender&aacute;s a usar las API de Google y comprender&aacute;s el funcionamiento de los sensores de los m&oacute;viles y otros dispositivos y su interacci&oacute;n con las aplicaciones de Android. </p>
+<p>Este curso est&aacute; avalado por la prestigiosa Universidad Camilo Jos&eacute; Cela. No te lo pienses m&aacute;s. Aprender a programar Android y a hacer tus propias aplicaciones para m&oacute;viles con Android es el futuro de la telefon&iacute;a m&oacute;vil. &iexcl;S&uacute;bete al tren de las nuevas tecnolog&iacute;as con Master-D!</p>
+<p><br />
+<strong>CARACTER&Iacute;STICAS DEL CURSO</strong><br />
+<br />
+<strong>Bolsa de empleo</strong> <br />
+Acceder&aacute;s a nuestra Bolsa de Empleo GRATIS </p>
+<p><strong>Pr&aacute;cticas en empresas</strong> <br />
+Accede al mercado laboral con Master.D </p>
+<p><strong>Campus virtual</strong> <br />
+Learnnity: tu comunidad del aprendizaje </p>
+<p><strong>Universidad Camilo Jos&eacute; Cela</strong> <br />
+Curso avalado por la prestigiosa Universidad </p>
+</td>
+
+</tr>
+
+<tr>
+
+<td colspan="2">&nbsp;</td>
+
+</tr>
+
+</table>
+        )
+
+)
+
+
+
+

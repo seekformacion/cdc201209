@@ -1,0 +1,24 @@
+
+
+.CajaCurso {
+	margin-bottom:6px;
+	padding:9px;
+	width:600px;height:135px; 
+	border: 1px solid;
+}
+
+.TituloTexto{ margin-bottom:10px;}
+
+
+.bloq_texto_cajacurso{float:left; width: 488px; height:116px; }
+.bloq_img_cajacurso{float:right;  width: 102px; height:116px;}
+
+.logoCentListcat{border: 1px solid; width:99px; height:49px;}
+
+.checkbox_cajacurso { float: right;
+    left: 33px;
+    position: relative;
+    top: 1px;}
+	
+.BotonListado { background-position: -97px -51px; width:110px; height:23px; float:right; margin-left:10px;}
+.BotonListado img { margin-top:2px; border:0px; }
