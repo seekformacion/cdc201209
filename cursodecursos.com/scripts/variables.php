@@ -8,15 +8,15 @@ global $conf;
 
 ################################## DB connect
 $conf[host]="localhost";
-$conf[db]="laiislac_seekvero";
-$conf[usr]="laiislac";
-$conf[pass]="ideosites2009";
+$conf[db]="seekformacion";
+$conf[usr]="root";
+$conf[pass]="2010dos";
 
 
 $conf[equisitesT][1]="cursos";$conf[equisitesU][1]="http://cursodecursos.com";
 
-$paths[root]="/home/laiislac/seekvero";
-$paths[www]="/home/laiislac/www/cursodecursos.com";
+$paths[root]="/home/ec2-user/httpd/cdc201209/framework";
+$paths[www]="/home/ec2-user/httpd/cdc201209/cursodecursos.com";
 
 
 $paths[dtb]=$paths[root] . "/core/db";
