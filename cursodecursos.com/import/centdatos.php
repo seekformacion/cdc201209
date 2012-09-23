@@ -72,6 +72,203 @@ $datos[tipocent]=trim(str_replace($quitosdecurso,'',$codigo));
 
 
 
+
+
+
+
+
+
+############## listado de sedes
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/centros-listasedes.php?idcentro=' . $idc);
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=split("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+
+#id sedes
+if(strlen($codigo)>strlen(str_replace('javascript:borrasede','',$codigo))){
+$quitosdecurso=array('<a href="#" onclick="javascript:borrasede(\'' . $idc . "','" ,'\')">');
+$datos[sedes][trim(str_replace($quitosdecurso,'',$codigo))][nomsede]=0;	
+}
+
+}
+
+
+
+foreach ($datos[sedes] as $idsede => $value) {
+
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/centros-fichasede.php?idsede=' . $idsede);
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=split("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+
+#nombre sede
+if(strlen($codigo)>strlen(str_replace('name="sede"','',$codigo))){
+$quitosdecurso=array('<input name="sede" type="text" class="campos" id="sede" value="','" size="12">');
+$datos[sedes][$idsede][nomsede]=trim(str_replace($quitosdecurso,'',$codigo));	
+}
+# cp
+if(strlen($codigo)>strlen(str_replace('name="cp"','',$codigo))){
+$quitosdecurso=array('<input name="cp" type="text" class="campos" value="','" size="3">');
+$datos[sedes][$idsede][cp]=trim(str_replace($quitosdecurso,'',$codigo));	
+}
+# direccion
+if(strlen($codigo)>strlen(str_replace('name="direccion"','',$codigo))){
+$quitosdecurso=array('<input name="direccion" type="text" class="campos" value="','" size="34">');
+$datos[sedes][$idsede][direccion]=trim(str_replace($quitosdecurso,'',$codigo));	
+}
+
+# poblacion
+if(strlen($codigo)>strlen(str_replace('name="poblacion"','',$codigo))){
+$quitosdecurso=array('<input name="poblacion" type="text" class="campos" value="','" size="20">');
+$datos[sedes][$idsede][poblacion]=trim(str_replace($quitosdecurso,'',$codigo));	
+}
+
+
+}
+break;
+}
+
+
+#contactos
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/centros-listacontactos.php?idcentro=' . $idc);
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=split("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+$lineanew=array();
+$codigo=trim($codigo);
+#nombre idcontacto
+if(strlen($codigo)>strlen(str_replace('<tr class="listadopar" id="','',$codigo))){
+$quitosdecurso=array('<tr class="listadopar" id="');
+$lineanew=explode('"', str_replace($quitosdecurso,'',$codigo) ); $idcont=$lineanew[0];
+$datos[contactos][$idcont][id]=$idcont;	
+}
+
+
+if(strlen($codigo)>strlen(str_replace('<td width="215" align="left"','',$codigo))){
+$quitosdecurso=array('<td width="215" align="left" onClick="javaescript:recargafichacontacto(' . $idcont . ',\'' . $idc . '\');">','</td>');
+$datos[contactos][$idcont][nomcont]=trim(str_replace($quitosdecurso,'',$codigo));		
+}
+
+if(strlen($codigo)>strlen(str_replace('<td width="62" align="left"','',$codigo))){
+$quitosdecurso=array('<td width="62" align="left" onClick="javaescript:recargafichacontacto(' . $idcont . ',\'' . $idc . '\');">','</td>');
+$datos[contactos][$idcont][telcont]=trim(str_replace($quitosdecurso,'',$codigo));		
+}
+
+if(strlen($codigo)>strlen(str_replace('<td width="101" align="left"','',$codigo))){
+$quitosdecurso=array('<td width="101" align="left" onClick="javaescript:recargafichacontacto(' . $idcont . ',\'' . $idc . '\');">','</td>');
+$datos[contactos][$idcont][mailcont]=trim(str_replace($quitosdecurso,'',$codigo));		
+}
+
+}
+
+#campos
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/listadocampos.php?idcentro=' . $idc);
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=split("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+$lineanew=array();
+$codigo=trim($codigo);
+
+#nombre idcontacto
+if(strlen($codigo)>strlen(str_replace('<tr align="center" class="listadopar" id="','',$codigo))){
+$quitosdecurso=array('<tr align="center" class="listadopar" id="');
+$lineanew=explode('"', str_replace($quitosdecurso,'',$codigo) ); $idcont=$lineanew[0];
+$datos[campos][$idcont][id]=$idcont;$datos[campos][$idcont][obligado]=0;	
+}
+
+
+if(strlen($codigo)>strlen(str_replace('*','',$codigo))){
+$datos[campos][$idcont][obligado]=1;		
+}
+
+if(strlen($codigo)>strlen(str_replace('<td width="110" align="left"','',$codigo))){
+$quitosdecurso=array('<td width="110" align="left" onClick="javaescript:recargafichacampo(' . $idcont . ',\'' . $idc . '\');">','</td>');
+$datos[campos][$idcont][]=trim(str_replace($quitosdecurso,'',$codigo));		
+}
+
+}
+
+
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/urlscript.php?idcentro=' . $idc);
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=split("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+
+#URL
+if(strlen($codigo)>strlen(str_replace('name="url"','',$codigo))){
+$quitosdecurso=array('<input name="url" id="url" type="text" class="campos" value="','" size="70" onKeyUp="javascript:cambio3();"> </td>');
+$datos[urlpixel]=trim(str_replace($quitosdecurso,'',$codigo));	
+}
+
+}
+
+
+
+
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/geoporcentro.php?idcentro=' . $idc);
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=split("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+$codigo=str_replace('<img src="/images/pixel.gif" width="3" height="15"> ','', $codigo);
+#provincias perfil
+if(strlen($codigo)>strlen(str_replace('onClick="javascript:relojespera()">','',$codigo))){
+$newlin=explode('"', $codigo);$codigo=$newlin[1];$newlin2=explode('&', $codigo);$codigo=str_replace('eliminapro=', '', $newlin2[3]);
+$datos[provisperfil][]=$codigo;
+}
+
+if(strlen($codigo)>strlen(str_replace('onClick="javascript:ocultafiltro2()" checked','',$codigo))){
+$datos[provisperfil][act]=1;
+}
+
+if(strlen($codigo)>strlen(str_replace('onClick="javascript:centaplicoatodos()" checked','',$codigo))){
+$datos[provisperfil][tod]=1;
+}
+
+}
+
+
 print_r($datos);
 print_r($lineas);
 
