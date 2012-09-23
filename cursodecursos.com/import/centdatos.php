@@ -1,6 +1,6 @@
 <?php
 
-$idc=939;
+$idc=25642;
 
 
 $lineas=array();
@@ -139,7 +139,7 @@ $datos[sedes][$idsede][poblacion]=trim(str_replace($quitosdecurso,'',$codigo));
 
 
 }
-break;
+#break;
 }
 
 
@@ -270,6 +270,6 @@ $datos[provisperfil][tod]=1;
 
 
 print_r($datos);
-print_r($lineas);
+#print_r($lineas);
 
 ?>
