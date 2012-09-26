@@ -328,7 +328,7 @@ $datos['idc']=$idc;
 
 
 
-echo exif_imagetype('http://www.todovino.com/images/slider/26_enolobox.jpg');
+echo exif_imagetype($url);
 
 
 
