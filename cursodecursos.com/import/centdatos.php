@@ -312,11 +312,13 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 	
 	$dbnivel->query($queryp);
 	
-	echo $queryp;
+	
 	
 	
 	}
 
+$queryp= "UPDATE import_centro SET sedes=1 where idseek=$idseek;";
+$dbnivel->query($queryp);
 	
 if (!$dbnivel->close()){die($dbnivel->error());};	
 	
