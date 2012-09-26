@@ -327,7 +327,7 @@ $datos['idc']=$idc;
 
 
 
-$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/logos.php?tipo=g&idcentro=' . $idc);
+$c = curl_init('http://www.todovino.com/images/slider/26_enolobox.jpg');
 curl_setopt($c, CURLOPT_VERBOSE, true);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
