@@ -294,8 +294,6 @@ return $datos;
 
 function inserta_sedes($datos,$idseek){global $conf;
 	
-
-	
 	
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
@@ -344,12 +342,11 @@ $dbnivel->query($queryp);
 
 if (!$dbnivel->close()){die($dbnivel->error());};				
 					
-#inserta_sedes($datos[sedes], $idseek);		
+inserta_sedes($datos[sedes], $idseek);		
  		
 		
 	
 }
-
 
 
 
