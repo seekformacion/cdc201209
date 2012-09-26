@@ -310,7 +310,9 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 	(idcentro,nombre,pais,provincia,poblacion,cp,direccion) 
 	VALUES 
 	($idseek,'$nomsede','8','$idprovi','$poblacion','$cp','$direccion');";
+	
 	$dbnivel->query($queryp);
+	
 	echo $queryp;
 	
 	
