@@ -1,5 +1,5 @@
 <?php
-include 'variables.php';
+include '../skin/variables.php';
 
 
 
