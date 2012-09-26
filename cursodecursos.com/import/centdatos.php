@@ -5,6 +5,25 @@ $paths[dtb]=$paths[root] . "/core/db";
 include $paths[dtb] . '/db.php';
 
 
+function utf8_encode_deep(&$input) {
+    if (is_string($input)) {
+        $input = utf8_encode($input);
+    } else if (is_array($input)) {
+        foreach ($input as &$value) {
+            utf8_encode_deep($value);
+        }
+
+        unset($value);
+    } else if (is_object($input)) {
+        $vars = array_keys(get_object_vars($input));
+
+        foreach ($vars as $var) {
+            utf8_encode_deep($input->$var);
+        }
+    }
+}
+
+
 function datos_centro($idc){
 $lineas=array();
 $c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/centros-detalle1.php?idcentro=' . $idc);
@@ -302,6 +321,8 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 $idc=939;
 $datos=datos_centro($idc);
 $datos['idc']=$idc;
+
+utf8_encode_deep($datos);
 
 insterta_centro($datos);
 
