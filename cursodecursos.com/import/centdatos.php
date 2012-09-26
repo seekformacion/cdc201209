@@ -2,7 +2,7 @@
 
 include "../scripts/variables.php";
 
-print_r($conf);
+
 function utf8_encode_deep(&$input) {
     if (is_string($input)) {
         $input = utf8_encode($input);
@@ -299,8 +299,17 @@ global $conf;
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "INSERT INTO skv_centros (id_old,nombre,descripcion,web,telefono,tipocentro,urlpixel,ext_logo) VALUES (" . $datos['idc'] . ",'" . $datos['nomcentro'] . "','" . $datos['descripcion'] . "','" . $datos['web'] . "','" . $datos['tlf'] . "','" . $datos['tipocent'] . "','" . $datos['urlpixel'] . "','gif');";
-echo $queryp;
 $dbnivel->query($queryp);
+
+$queryp= "SELECT LAST_INSERT_ID() as id;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$idseek=$row['id'];};
+$queryp= "INSERT INTO import_centro (idofer,idseek,datos) values (". $datos['idc'] . ",$idseek,1);";
+$dbnivel->query($queryp);
+
+
+
+
 if (!$dbnivel->close()){die($dbnivel->error());};				
 					
 				
