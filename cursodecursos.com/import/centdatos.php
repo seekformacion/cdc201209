@@ -305,7 +305,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
            	$cp=$valores['cp'];$idprovi=substr($cp,0,2);
             $direccion=$valores['direccion'];
 			
-	$queryp= "INSERT INTO skv_centros 
+	$queryp= "INSERT INTO skv_sedes 
 	(idcentro,nombre,pais,provincia,poblacion,cp,direccion) 
 	VALUES 
 	($idseek,'$nomsede','8','$idprovi','$poblacion','$cp','$direccion');";
