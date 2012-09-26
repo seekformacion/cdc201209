@@ -276,15 +276,29 @@ return $datos;
 }
 
 
+function insterta_centro($datos){
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+$queryp= "INSERT INTO skv_centros (id_old,nombre,descripcion,web,telefono,tipocentro,urlpixel,ext_logo) VALUES ($datos['idc'],'$datos['nomcentro']','$datos['descripcion']','$datos['web']','$datos['tlf']','$datos['tipocent']','$datos['urlpixel']','gif');";
+
+$dbnivel->query($queryp);
+if (!$dbnivel->close()){die($dbnivel->error());};				
+					
+				
+ 		
+		
+	
+}
+
+
 
 
 
 $idc=939;
 $datos=datos_centro($idc);
+$datos['idc']=$idc;
 
-
-
-
+insterta_centro($datos);
 
 
 
