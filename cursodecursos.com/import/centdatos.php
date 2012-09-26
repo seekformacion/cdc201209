@@ -37,7 +37,6 @@ $lineas=split("\n",$data);
 
 
 
-
 foreach ($lineas as $pointer => $codigo){
 
 #nombre del centro
@@ -319,18 +318,29 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 $idc=939;
-$datos=datos_centro($idc);
+#$datos=datos_centro($idc);
 $datos['idc']=$idc;
 
-utf8_encode_deep($datos);
+#utf8_encode_deep($datos);
 
-insterta_centro($datos);
-
-
+#insterta_centro($datos);
 
 
 
-print_r($datos);
-#print_r($lineas);
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/logos.php?tipo=g&idcentro=' . $idc);
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+echo $page;
+
+
+
+
+
+
+
+
+#print_r($datos);
 
 ?>
