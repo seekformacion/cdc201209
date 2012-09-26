@@ -302,7 +302,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 	foreach ($datos as $idsed => $valores) {
 		 	$nomsede=$valores['nomsede'];
             $poblacion=$valores['poblacion'];
-           	$cp=$valores['cp'];$idprovi=substr($cp,0,2);
+           	$cp=$valores['cp'];if(strlen($cp)==4){$cp="0" . $cp;};$idprovi=substr($cp,0,2);
             $direccion=$valores['direccion'];
 			
 	$queryp= "INSERT INTO skv_sedes 
@@ -356,6 +356,71 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 }
 
 
+function equicampo($value,$table,$campo){global $conf;
+
+$id=0;
+
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+$queryp= "SELECT id from $table where $campo='$value';";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$id=$row['id'];};		
+
+if(!$id){
+$queryp= "INSERT into $table ($campo) values ('$value');";
+$dbnivel->query($queryp);
+$queryp= "SELECT LAST_INSERT_ID() as id;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$id=$row['id'];};
+}
+if (!$dbnivel->close()){die($dbnivel->error());};
+return $id;
+}
+
+
+
+function inserta_campos($datos,$idseek){global $conf;
+	
+	foreach ($datos as $idsed => $valores) {
+		 	$camp=$valores[0];
+           	$idcampo=equicampo($camp,'skv_campos','nom_campo');	
+			$datos[$idsed]['idcampo']=$idcampo;
+			}
+
+	$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+	if (!$dbnivel->open()){die($dbnivel->error());};
+		
+	foreach ($datos as $idsed => $valores) {
+		 	$ob=$valores['obligado'];
+            $camp=$valores[0];
+           	$most=$valores[1];
+			$equi=$valores[2];
+			$idcampo=$valores['idcampo'];
+	
+	
+		
+	$queryp= "INSERT INTO skv_relCampos 
+	(id_centro,idcampo,muestro,bd,obligado) 
+	VALUES 
+	($idseek,'$idcampo','$most','$equi','$ob');";
+	
+	$dbnivel->query($queryp);
+
+	}
+
+$queryp= "UPDATE import_centro SET campos=1 where idseek=$idseek;";
+$dbnivel->query($queryp);
+	
+if (!$dbnivel->close()){die($dbnivel->error());};	
+	
+}
+
+
+
+
+
+
+
 
 function insterta_centro($datos){
 global $conf;		
@@ -379,7 +444,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 					
 inserta_sedes($datos['sedes'], $idseek);		
 inserta_contactos($datos['contactos'], $idseek);	
-		
+inserta_campos($datos['campos'], $idseek);		
 		
 	
 }
@@ -388,13 +453,11 @@ inserta_contactos($datos['contactos'], $idseek);
 
 
 $idc=939;
+
 $datos=datos_centro($idc);
 $datos['idc']=$idc;
-
 utf8_encode_deep($datos);
-
 insterta_centro($datos);
-
 
 
 
