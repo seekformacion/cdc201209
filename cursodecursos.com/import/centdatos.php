@@ -293,7 +293,7 @@ return $datos;
 
 
 function inserta_sedes($datos,$idseek){global $conf;
-	print_r($datos);
+	
 
 	
 	
@@ -311,6 +311,9 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 	VALUES 
 	($idseek,'$nomsede','8','$idprovi','$poblacion','$cp','$direccion');";
 	$dbnivel->query($queryp);
+	echo $queryp;
+	
+	
 	}
 
 	
