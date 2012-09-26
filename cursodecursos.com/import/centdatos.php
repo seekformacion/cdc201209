@@ -1,10 +1,8 @@
 <?php
 
-$paths[root]="/home/ec2-user/httpd/cdc201209/framework";
-$paths[dtb]=$paths[root] . "/core/db";
-include $paths[dtb] . '/db.php';
+include "../scripts/variables.php";
 
-
+print_r($conf);
 function utf8_encode_deep(&$input) {
     if (is_string($input)) {
         $input = utf8_encode($input);
@@ -295,10 +293,8 @@ return $datos;
 
 
 function insterta_centro($datos){
-$conf[host]="localhost";
-$conf[db]="seekformacion";
-$conf[usr]="root";
-$conf[pass]="2010dos";
+global $conf;		
+	
 
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
@@ -318,12 +314,12 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 $idc=939;
-$datos=datos_centro($idc);
+#$datos=datos_centro($idc);
 $datos['idc']=$idc;
 
 utf8_encode_deep($datos);
 
-insterta_centro($datos);
+#insterta_centro($datos);
 
 
 
