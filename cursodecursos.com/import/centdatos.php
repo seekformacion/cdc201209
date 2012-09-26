@@ -344,7 +344,7 @@ $dbnivel->query($queryp);
 
 if (!$dbnivel->close()){die($dbnivel->error());};				
 					
-inserta_sedes($datos[sedes], $idseek);		
+#inserta_sedes($datos[sedes], $idseek);		
  		
 		
 	
