@@ -318,25 +318,17 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 $idc=939;
-#$datos=datos_centro($idc);
+$datos=datos_centro($idc);
 $datos['idc']=$idc;
 
-#utf8_encode_deep($datos);
+utf8_encode_deep($datos);
 
-#insterta_centro($datos);
-
-
-
-
-echo exif_imagetype('http://procenet:nuevaof21@82.223.155.233:81/logos.php?tipo=g&idcentro=939');
+insterta_centro($datos);
 
 
 
 
-
-
-
-
+#echo exif_imagetype('http://procenet:nuevaof21@82.223.155.233:81/logos.php?tipo=g&idcentro=939');
 #print_r($datos);
 
 ?>
