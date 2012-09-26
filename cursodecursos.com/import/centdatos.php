@@ -1,11 +1,5 @@
 <?php
 
-global $conf;
-
-$conf[host]="localhost";
-$conf[db]="seekformacion";
-$conf[usr]="root";
-$conf[pass]="2010dos";
 
 
 
@@ -281,7 +275,10 @@ return $datos;
 
 
 function insterta_centro($datos){
-global $conf;
+$conf[host]="localhost";
+$conf[db]="seekformacion";
+$conf[usr]="root";
+$conf[pass]="2010dos";
 
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
@@ -301,7 +298,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 $idc=939;
-#$datos=datos_centro($idc);
+$datos=datos_centro($idc);
 $datos['idc']=$idc;
 
 insterta_centro($datos);
