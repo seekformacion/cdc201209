@@ -292,6 +292,11 @@ return $datos;
 }
 
 
+function inserta_sedes($datos,$idseek){
+	print_r($datos);
+}
+
+
 function insterta_centro($datos){
 global $conf;		
 	
@@ -312,7 +317,7 @@ $dbnivel->query($queryp);
 
 if (!$dbnivel->close()){die($dbnivel->error());};				
 					
-				
+inserta_sedes($datos[sedes], $idseek);		
  		
 		
 	
