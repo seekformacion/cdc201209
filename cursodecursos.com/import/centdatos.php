@@ -328,7 +328,7 @@ $datos['idc']=$idc;
 
 
 
-echo exif_imagetype($url);
+echo exif_imagetype('http://procenet:nuevaof21@82.223.155.233:81/logos.php?tipo=g&idcentro=939');
 
 
 
