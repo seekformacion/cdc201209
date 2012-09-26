@@ -1,7 +1,11 @@
 <?php
-include '../skin/variables.php';
 
+global $conf;
 
+$conf[host]="localhost";
+$conf[db]="seekformacion";
+$conf[usr]="root";
+$conf[pass]="2010dos";
 
 
 
