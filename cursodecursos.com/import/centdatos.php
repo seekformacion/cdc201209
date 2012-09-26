@@ -292,8 +292,30 @@ return $datos;
 }
 
 
-function inserta_sedes($datos,$idseek){
+function inserta_sedes($datos,$idseek){global $conf;
 	print_r($datos);
+
+	
+	
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+	
+	foreach ($datos as $idsed => $valores) {
+		 	$nomsede=$valores['nomsede'];
+            $poblacion=$valores['poblacion'];
+           	$cp=$valores['cp'];$idprovi=substr($cp,0,2);
+            $direccion=$valores['direccion'];
+			
+	$queryp= "INSERT INTO skv_centros 
+	(idcentro,nombre,pais,provincia,poblacion,cp,direccion) 
+	VALUES 
+	($idseek,'$nomsede','8','$idprovi','$poblacion','$cp','$direccion');";
+	$dbnivel->query($queryp);
+	}
+
+	
+if (!$dbnivel->close()){die($dbnivel->error());};	
+	
 }
 
 
