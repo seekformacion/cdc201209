@@ -314,12 +314,12 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 $idc=939;
-#$datos=datos_centro($idc);
+$datos=datos_centro($idc);
 $datos['idc']=$idc;
 
 utf8_encode_deep($datos);
 
-#insterta_centro($datos);
+insterta_centro($datos);
 
 
 
