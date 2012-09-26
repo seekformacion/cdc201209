@@ -1,8 +1,11 @@
 <?php
+include 'variables.php';
+global $where;
 
-$idc=939;
 
 
+
+function datos_centro($idc){
 $lineas=array();
 $c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/centros-detalle1.php?idcentro=' . $idc);
 curl_setopt($c, CURLOPT_VERBOSE, true);
@@ -267,6 +270,24 @@ $datos[provisperfil][tod]=1;
 }
 
 }
+
+
+return $datos;
+}
+
+
+
+
+
+$idc=939;
+$datos=datos_centro($idc);
+
+
+
+
+
+
+
 
 
 print_r($datos);
