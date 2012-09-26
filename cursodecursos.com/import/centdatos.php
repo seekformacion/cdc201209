@@ -1,6 +1,8 @@
 <?php
 
-
+$paths[root]="/home/ec2-user/httpd/cdc201209/framework";
+$paths[dtb]=$paths[root] . "/core/db";
+include $paths[dtb] . '/db.php';
 
 
 function datos_centro($idc){
