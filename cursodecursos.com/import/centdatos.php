@@ -324,6 +324,38 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 	
 }
 
+function inserta_contactos($datos,$idseek){global $conf;
+	
+	
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+	
+	
+	foreach ($datos as $idsed => $valores) {
+		 	$nomcont=$valores['nomcont'];
+            $telcont=$valores['telcont'];
+           	$mailcont=$valores['mailcont'];
+			
+	$queryp= "INSERT INTO skv_contactos 
+	(idcentro,nombre,tlf,mail) 
+	VALUES 
+	($idseek,'$nomcont','$telcont','$mailcont');";
+	
+	$dbnivel->query($queryp);
+	
+	
+	
+	
+	}
+
+$queryp= "UPDATE import_centro SET contactos=1 where idseek=$idseek;";
+$dbnivel->query($queryp);
+	
+if (!$dbnivel->close()){die($dbnivel->error());};	
+	
+}
+
+
 
 function insterta_centro($datos){
 global $conf;		
@@ -345,8 +377,9 @@ $dbnivel->query($queryp);
 
 if (!$dbnivel->close()){die($dbnivel->error());};				
 					
-inserta_sedes($datos[sedes], $idseek);		
- 		
+inserta_sedes($datos['sedes'], $idseek);		
+inserta_contactos($datos['contactos'], $idseek);	
+		
 		
 	
 }
