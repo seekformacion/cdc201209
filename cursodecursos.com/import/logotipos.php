@@ -61,7 +61,7 @@ function timedRefresh(timeoutPeriod) {
 //   -->
 </script>
 </head>
-<body onload="JavaScript:timedRefresh(5000);">
+<body onload="JavaScript:timedRefresh(1000);">
 <p>
 
 Insertado logotipo ' . "$nombre.$ext" . '
