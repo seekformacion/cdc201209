@@ -45,7 +45,7 @@ fwrite($fp, $content2); fclose($fp);
 $queryp= "update import_centro set logos=1 where id=$idseek;";
 $dbnivel->query($queryp);
 
-$queryp= "update skv_centros set file_logo='$nombre' where id=$idseek;";
+$queryp= "update skv_centros set file_logo='$nombre.$ext' where id=$idseek;";
 $dbnivel->query($queryp);
 
 
