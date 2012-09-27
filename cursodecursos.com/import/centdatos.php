@@ -31,7 +31,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 
@@ -76,7 +76,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 foreach ($lineas as $pointer => $codigo){
@@ -106,7 +106,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 foreach ($lineas as $pointer => $codigo){
@@ -130,7 +130,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 foreach ($lineas as $pointer => $codigo){
@@ -171,7 +171,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 foreach ($lineas as $pointer => $codigo){
@@ -210,7 +210,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 foreach ($lineas as $pointer => $codigo){
@@ -244,7 +244,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 foreach ($lineas as $pointer => $codigo){
@@ -267,7 +267,7 @@ curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
 curl_close($c);
 $data=str_replace('><',">\n<",$page);
-$lineas=split("\n",$data); 
+$lineas=explode("\n",$data); 
 
 
 foreach ($lineas as $pointer => $codigo){
