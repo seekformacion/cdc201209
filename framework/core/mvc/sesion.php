@@ -3,7 +3,7 @@
 $urltotal=$_SERVER['REQUEST_URI'];
 
 
-$sessD=split("\?SSID=",$urltotal);
+$sessD=explode("\?SSID=",$urltotal);
 
 $vars[url]=$sessD[0];
 $vars[SSID]=$sessD[1];
