@@ -28,6 +28,7 @@ while ($row = $dbnivel->fetchassoc()){
 	$nombre=$row['nombre'];	
 }	
 
+if($idseek){
 $nombre=normaliza($nombre);
 $nombre=trim(str_replace(" ","_",$nombre));
 
@@ -47,6 +48,32 @@ $dbnivel->query($queryp);
 
 $queryp= "update skv_centros set file_logo='$nombre.$ext' where id=$idseek;";
 $dbnivel->query($queryp);
+
+echo '
+
+<html>
+<head>
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+//   -->
+</script>
+</head>
+<body onload="JavaScript:timedRefresh(5000);">
+<p>
+
+Insertado logotipo ' . "$nombre.$ext" . '
+</p>
+</body>
+</html>
+
+';
+
+
+
+}
 
 
 if (!$dbnivel->close()){die($dbnivel->error());};
