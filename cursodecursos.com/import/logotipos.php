@@ -49,6 +49,14 @@ $dbnivel->query($queryp);
 $queryp= "update skv_centros set file_logo='$nombre.$ext' where id=$idseek;";
 $dbnivel->query($queryp);
 
+
+
+
+}
+
+
+if (!$dbnivel->close()){die($dbnivel->error());};
+
 echo '
 
 <html>
@@ -72,9 +80,4 @@ Insertado logotipo ' . "$nombre.$ext" . '
 ';
 
 
-
-}
-
-
-if (!$dbnivel->close()){die($dbnivel->error());};
 ?>
