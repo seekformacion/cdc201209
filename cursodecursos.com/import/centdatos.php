@@ -302,7 +302,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 	foreach ($datos as $idsed => $valores) {
 		 	$nomsede=$valores['nomsede'];
             $poblacion=$valores['poblacion'];
-           	$cp=$valores['cp'];if(strlen($cp)==4){$cp="0" . $cp;};$idprovi=substr($cp,0,2);
+           	$cp=$valores['cp'];if(strlen($cp)==4){$cp="0" . $cp;};$idprovi=substr($cp,0,3);
             $direccion=$valores['direccion'];
 			
 	$queryp= "INSERT INTO skv_sedes 
