@@ -49,7 +49,8 @@ while ($row = $dbnivel->fetchassoc()){$cents[$row[id]]=$row[id_old];};
 foreach ($cents as $id => $id_old){
 $content = file_get_contents("http://www.ofertaformativa.com/logosp/$id_old.gif");
 
-if(strlen($content)>290){$fp = fopen($paths[www] . "/logos/medium/$id.gif", "w");
+if(strlen($content)>290){
+$fp = fopen($paths[www] . "/logos/medium/$id.gif", "w");
 fwrite($fp, $content); fclose($fp);
 $content2 = file_get_contents("http://www.ofertaformativa.com/logosg/$id_old.gif");
 $fp = fopen($paths[www] . "/logos/large/$id.gif", "w");fwrite($fp, $content2); fclose($fp);
