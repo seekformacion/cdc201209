@@ -451,8 +451,15 @@ inserta_campos($datos['campos'], $idseek);
 
 
 
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+$queryp= "SELECT idofer from import_listcentros_a_importar where hecho=0 limit 1;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$idc=$row['idofer'];};		
+if (!$dbnivel->close()){die($dbnivel->error());};
 
-$idc=939;
+
+
 
 $datos=datos_centro($idc);
 $datos['idc']=$idc;
@@ -461,7 +468,33 @@ insterta_centro($datos);
 
 
 
-#echo exif_imagetype('http://procenet:nuevaof21@82.223.155.233:81/logos.php?tipo=g&idcentro=939');
-#print_r($datos);
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+$queryp= "UPDATE import_listcentros_a_importar set hecho=1 where idofer=$idc;";
+$dbnivel->query($queryp);
+if (!$dbnivel->close()){die($dbnivel->error());};
+
+
+echo '
+
+<html>
+<head>
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+//   -->
+</script>
+</head>
+<body onload="JavaScript:timedRefresh(5000);">
+<p>
+
+Insertados centro: ' . $idc . '
+</p>
+</body>
+</html>
+
+';
 
 ?>
