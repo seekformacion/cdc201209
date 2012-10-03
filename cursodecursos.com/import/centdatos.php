@@ -120,7 +120,7 @@ $datos[sedes][trim(str_replace($quitosdecurso,'',$codigo))][nomsede]=0;
 }
 
 
-
+if(count($datos[sedes])>0){
 foreach ($datos[sedes] as $idsede => $value) {
 
 $lineas=array();
@@ -161,6 +161,12 @@ $datos[sedes][$idsede][poblacion]=trim(str_replace($quitosdecurso,'',$codigo));
 }
 #break;
 }
+
+}
+
+
+
+
 
 
 #contactos
@@ -442,9 +448,9 @@ $dbnivel->query($queryp);
 
 if (!$dbnivel->close()){die($dbnivel->error());};				
 					
-inserta_sedes($datos['sedes'], $idseek);		
-inserta_contactos($datos['contactos'], $idseek);	
-inserta_campos($datos['campos'], $idseek);		
+if(count($datos['sedes'])>0){inserta_sedes($datos['sedes'], $idseek);};		
+if(count($datos['contactos'])>0){inserta_contactos($datos['contactos'], $idseek);	};	
+if(count($datos['campos'])>0){inserta_campos($datos['campos'], $idseek);	};		
 		
 	
 }
