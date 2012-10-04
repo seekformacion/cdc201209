@@ -45,6 +45,9 @@ $finnom=strpos(' -', $datos[nomcurso]);
 if(strpos(' (', $datos[nomcurso])<$finnom){$finnom=strpos(' (', $datos[nomcurso]);};
 $datos[nomcursoalt]=substr($datos[nomcurso],0,$finnom);
 
+
+echo strpos(' (', $datos[nomcurso]);
+
 }
 
 
