@@ -198,19 +198,19 @@ foreach ($lineas as $pointer => $codigo){
 	
 #temario
 if(strlen($codigo)>strlen(str_replace('<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">','',$codigo))){$looptemario=1;};
-if(strlen($codigo)>strlen(str_replace('</textarea>','',$codigo))){$looptemario=0;}
+if(strlen($codigo)>strlen(str_replace('</textarea>','',$codigo))){$looptemario=0;};
 if($looptemario){
 $datos[temario].=$codigo;
-}}
-
-
-
-	
-
-
-
-
 }
+
+
+
+}	
+
+
+
+
+
 
 
 
