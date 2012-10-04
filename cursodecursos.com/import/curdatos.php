@@ -39,11 +39,15 @@ if(strlen($codigo)>strlen(str_replace('<input name="cur_nombre" type="text" clas
 $quitosdecurso=array('<input name="cur_nombre" type="text" class="campos" id="cur_nombre" value="');
 $newline=explode('" size="70" onKeyUp=',str_replace($quitosdecurso,'',$codigo))	;
 $datos[nomcurso]=trim($newline[0]);	
-}
+
 
 $finnom=strpos(' -', $datos[nomcurso]);
 if(strpos(' (', $datos[nomcurso])<$finnom){$finnom=strpos(' (', $datos[nomcurso]);};
-$datos[nomcurso-alt]=substr($datos[nomcurso],0,$finnom);
+$datos[nomcursoalt]=substr($datos[nomcurso],0,$finnom);
+
+}
+
+
 
 
 #idcurpropio
