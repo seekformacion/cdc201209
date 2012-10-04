@@ -3,8 +3,11 @@ set_time_limit(0);
 include "../scripts/variables.php";
 
 
+$idc=24815;
+$idcur=757605;
+
 $lineas=array();
-$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/fichacurso.php?iddelcentro=939&idcurso=820947');
+$c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/fichacurso.php?iddelcentro=$idc&idcurso=$idcur");
 curl_setopt($c, CURLOPT_VERBOSE, true);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
@@ -183,7 +186,7 @@ $datos[dondeseimparte][]=trim($newline[1]);
 
 
 $lineas=array();
-$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/temariopopup.php?iddelcentro=939&idcurso=820946');
+$c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/temariopopup.php?iddelcentro=$idc&idcurso=$idcur");
 curl_setopt($c, CURLOPT_VERBOSE, true);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
@@ -229,7 +232,7 @@ $datos[temario]=html_entity_decode($datos[temario]);
 
 
 $lineas=array();
-$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/categoriza.php?iddelcentro=939&idcurso=820946');
+$c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/categoriza.php?iddelcentro=$idc&idcurso=$idcur");
 curl_setopt($c, CURLOPT_VERBOSE, true);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
@@ -256,7 +259,7 @@ $datos[idcategoria]=trim($newline[0]);
 
 
 $lineas=array();
-$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/palclave.php?iddelcentro=939&idcurso=820946');
+$c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/palclave.php?iddelcentro=$idc&idcurso=$idcur");
 curl_setopt($c, CURLOPT_VERBOSE, true);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 $page = curl_exec($c);
