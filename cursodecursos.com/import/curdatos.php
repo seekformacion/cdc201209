@@ -255,6 +255,34 @@ $datos[idcategoria]=trim($newline[0]);
 
 
 
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/palclave.php?iddelcentro=939&idcurso=820946');
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=explode("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+			
+		
+	
+#palclave
+
+if(strlen($codigo)>strlen(str_replace('<textarea name="palabrasclave" cols="83" rows="2" class="campos" id="palabrasclave" onKeyUp="javascript:cambios();">','',$codigo))){
+$quitosdecurso=array('<textarea name="palabrasclave" cols="83" rows="2" class="campos" id="palabrasclave" onKeyUp="javascript:cambios();">');
+$newline=explode('</t',str_replace($quitosdecurso,'',$codigo));
+$datos[palclave]=trim($newline[0]);	
+}
+
+
+
+}	
+
+
+
 
 
 print_r($datos);
