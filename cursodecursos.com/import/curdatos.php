@@ -41,6 +41,11 @@ $newline=explode('" size="70" onKeyUp=',str_replace($quitosdecurso,'',$codigo))	
 $datos[nomcurso]=trim($newline[0]);	
 }
 
+$finnom=strpos(' -', $datos[nomcurso]);
+if(strpos(' (', $datos[nomcurso])<$finnom){$finnom=strpos(' (', $datos[nomcurso]);};
+$datos[nomcurso-alt]=substr($datos[nomcurso],0,$finnom);
+
+
 #idcurpropio
 if(strlen($codigo)>strlen(str_replace('<input name="cur_id_curso_propio" type="text" class="campos" id="cur_id_curso_propio" value="','',$codigo))){
 $quitosdecurso=array('<input name="cur_id_curso_propio" type="text" class="campos" id="cur_id_curso_propio" value="');
