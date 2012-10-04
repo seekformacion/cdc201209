@@ -216,7 +216,7 @@ $codOLD=array(
 '<strong>','</strong>','</p>','<p>','</br>','<br />'
 );
 $codNEW=array(
-"[str]","[|str]\n","[|p]\n","[p]","[|br]\n","[|br]\n"
+"[str]","[|str]\n","[|p]\n","[p]\n","[|br]\n","[|br]\n"
 );
 
 $datos[temario]=str_replace($codOLD,$codNEW,$datos[temario]);
