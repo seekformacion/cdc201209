@@ -72,6 +72,20 @@ $datos[idtipocurso]=trim($newline[1]);
 }}
 
 
+
+if(strlen($codigo)>strlen(str_replace('<select name="cur_id_metodo" class="campos" id="cur_id_metodo" onchange="javascript:cambios();">','',$codigo))){$loopmetodo=1;$datos[idmetodo]="";};
+if(strlen($codigo)>strlen(str_replace('</select>','',$codigo))){$loopmetodo=0;}
+if($loopmetodo){
+if(strlen($codigo)>strlen(str_replace('selected','',$codigo))){
+$newline=explode('"',str_replace($quitosdecurso,'',$codigo))	;
+$datos[idmetodo]=trim($newline[1]);
+}}
+
+
+
+
+
+
 if(strlen($codigo)>strlen(str_replace('<select name="cur_id_certificado" class="campos" id="cur_id_certificado" onchange="javascript:cambios();">','',$codigo))){$loopidcertificado=1;$datos[idcertificado]="";};
 if(strlen($codigo)>strlen(str_replace('</select>','',$codigo))){$loopidcertificado=0;}
 if($loopidcertificado){
@@ -197,7 +211,7 @@ $datos[dondeseimparte][]=trim($newline[1]);
 
 }
 
-print_r($lineas);
+
 $lineas=array();
 $c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/temariopopup.php?iddelcentro=$idc&idcurso=$idcur");
 curl_setopt($c, CURLOPT_VERBOSE, true);
@@ -305,5 +319,5 @@ $datos[palclave]=trim($newline[0]);
 
 
 print_r($datos);
-
+print_r($lineas);
 ?>
