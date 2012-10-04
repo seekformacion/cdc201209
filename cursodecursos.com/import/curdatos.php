@@ -150,6 +150,24 @@ $datos[paraqueteprepara]=trim($newline[0]);
 }
 
 
+#edadmin
+if(strlen($codigo)>strlen(str_replace('<input id="cur_edadmin" name="cur_edadmin" class="campos" type="text" size="4" onKeyUp="javascript:cambios();" value="','',$codigo))){
+$quitosdecurso=array('<input id="cur_edadmin" name="cur_edadmin" class="campos" type="text" size="4" onKeyUp="javascript:cambios();" value="');
+$newline=explode('"',str_replace($quitosdecurso,'',$codigo));
+$datos[edadmin]=trim($newline[0]);	
+}
+
+
+#edadmax
+if(strlen($codigo)>strlen(str_replace('<input id="cur_edadmax" name="cur_edadmax" class="campos" type="text" size="4" onKeyUp="javascript:cambios();" value="','',$codigo))){
+$quitosdecurso=array('<input id="cur_edadmax" name="cur_edadmax" class="campos" type="text" size="4" onKeyUp="javascript:cambios();" value="');
+$newline=explode('"',str_replace($quitosdecurso,'',$codigo));
+$datos[edadmax]=trim($newline[0]);	
+}
+
+
+
+
 #dondeseimparte
 if(strlen($codigo)>strlen(str_replace('<select name="dondeimparte[]" size="4" multiple class="campos" id="dondeimparte" onchange="javascript:cambios();">','',$codigo))){$loopdonde=1;};
 if(strlen($codigo)>strlen(str_replace('</select>','',$codigo))){$loopdonde=0;}
