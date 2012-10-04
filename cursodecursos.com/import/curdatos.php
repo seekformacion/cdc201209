@@ -197,7 +197,7 @@ $datos[dondeseimparte][]=trim($newline[1]);
 
 }
 
-
+print_r($lineas);
 $lineas=array();
 $c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/temariopopup.php?iddelcentro=$idc&idcurso=$idcur");
 curl_setopt($c, CURLOPT_VERBOSE, true);
@@ -305,5 +305,5 @@ $datos[palclave]=trim($newline[0]);
 
 
 print_r($datos);
-print_r($lineas);
+
 ?>
