@@ -118,13 +118,46 @@ $newline=explode('" size=',str_replace($quitosdecurso,'',$codigo))	;
 $datos[otrosdatos]=trim($newline[0]);	
 }
 
-
 #duracion
 if(strlen($codigo)>strlen(str_replace('<input name="cur_duracion" type="text" class="campos" id="cur_duracion" value="','',$codigo))){
 $quitosdecurso=array('<input name="cur_duracion" type="text" class="campos" id="cur_duracion" value="');
 $newline=explode('" size=',str_replace($quitosdecurso,'',$codigo))	;
 $datos[duracion]=trim($newline[0]);	
 }
+
+
+#descripcion
+if(strlen($codigo)>strlen(str_replace('<textarea name="cur_descripcion" cols="40" rows="3" class="campos" id="cur_descripcion" onKeyUp="javascript:cambios();">','',$codigo))){
+$quitosdecurso=array('<textarea name="cur_descripcion" cols="40" rows="3" class="campos" id="cur_descripcion" onKeyUp="javascript:cambios();">');
+$newline=explode('</t',str_replace($quitosdecurso,'',$codigo));
+$datos[descripcion]=trim($newline[0]);	
+}
+
+
+#dirigidoa
+if(strlen($codigo)>strlen(str_replace('<textarea name="cur_dirigidoa" cols="44" rows="3" class="campos" id="cur_dirigidoa" onKeyUp="javascript:cambios();">','',$codigo))){
+$quitosdecurso=array('<textarea name="cur_dirigidoa" cols="44" rows="3" class="campos" id="cur_dirigidoa" onKeyUp="javascript:cambios();">');
+$newline=explode('</t',str_replace($quitosdecurso,'',$codigo));
+$datos[dirigidoa]=trim($newline[0]);	
+}
+
+
+#paraqueteprepara
+if(strlen($codigo)>strlen(str_replace('<textarea name="cur_paraqueteprepara" cols="44" rows="3" class="campos" id="cur_paraqueteprepara" onKeyUp="javascript:cambios();">','',$codigo))){
+$quitosdecurso=array('<textarea name="cur_paraqueteprepara" cols="44" rows="3" class="campos" id="cur_paraqueteprepara" onKeyUp="javascript:cambios();">');
+$newline=explode('</t',str_replace($quitosdecurso,'',$codigo));
+$datos[paraqueteprepara]=trim($newline[0]);	
+}
+
+
+#dondeseimparte
+if(strlen($codigo)>strlen(str_replace('<select name="dondeimparte[]" size="4" multiple class="campos" id="dondeimparte" onchange="javascript:cambios();">','',$codigo))){$loopdonde=1;};
+if(strlen($codigo)>strlen(str_replace('</select>','',$codigo))){$loopdonde=0;}
+if($loopdonde){
+if(strlen($codigo)>strlen(str_replace('selected','',$codigo))){
+$newline=explode('"',str_replace($quitosdecurso,'',$codigo))	;
+$datos[dondeseimparte][]=trim($newline[1]);
+}}
 
 
 
