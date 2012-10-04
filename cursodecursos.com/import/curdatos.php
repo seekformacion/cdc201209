@@ -211,7 +211,7 @@ $datos[temario].=htmlspecialchars_decode($codigo);
 $datos[temario]=str_replace('<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">','',$datos[temario]);
 $datos[temario]=str_replace('><',">\n<",$datos[temario]);
 $datos[temario]=strip_tags($datos[temario]);
-
+$datos[temario]=html_entity_decode($datos[temario]);
 
 
 
