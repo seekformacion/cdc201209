@@ -41,7 +41,8 @@ $newline=explode('" size="70" onKeyUp=',str_replace($quitosdecurso,'',$codigo))	
 $datos[nomcurso]=trim($newline[0]);	
 
 
-$finnom=strpos($datos[nomcurso],' -');
+$finnom=1000;
+if(strpos($datos[nomcurso],' -')<$finnom){$finnom=strpos($datos[nomcurso],' -');};
 if(strpos($datos[nomcurso],' (')<$finnom){$finnom=strpos($datos[nomcurso],' (');};
 
 $datos[nomcursoalt]=substr($datos[nomcurso],0,$finnom*1);
