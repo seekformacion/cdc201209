@@ -207,11 +207,11 @@ $datos[temario].=htmlspecialchars_decode($codigo);
 
 }	
 
-
-$datos[temario]=str_replace('<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">','',$datos[temario]);
+$quitos=array('<font color="#000000" size="3" face="Times New Roman">','<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">');
+$datos[temario]=str_replace($quitos,'',$datos[temario]);
 $datos[temario]=str_replace('><',">\n<",$datos[temario]);
 $datos[temario]=strip_tags($datos[temario]);
-$datos[temario]=html_entity_decode($datos[temario]);
+#$datos[temario]=html_entity_decode($datos[temario]);
 
 
 
