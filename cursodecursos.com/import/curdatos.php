@@ -91,7 +91,7 @@ $datos[precio]=trim($newline[0]);
 }
 
 #mostrar_precio
-if(strlen($codigo)>strlen(str_replace('<input type="checkbox" name="cur_mostarprecio" id="cur_mostarprecio" value="1" checked onclick="','',$codigo))){
+if(strlen($codigo)>strlen(str_replace('<input type="checkbox" name="cur_mostarprecio" id="cur_mostarprecio" value="1" checked','',$codigo))){
 $datos[m_precio]=1;
 }
 
