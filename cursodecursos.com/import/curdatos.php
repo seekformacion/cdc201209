@@ -181,6 +181,42 @@ $datos[dondeseimparte][]=trim($newline[1]);
 
 }
 
+
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/temariopopup.php?iddelcentro=939&idcurso=820946');
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=explode("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+			
+		
+	
+#temario
+if(strlen($codigo)>strlen(str_replace('<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">','',$codigo))){$looptemario=1;};
+if(strlen($codigo)>strlen(str_replace('</textarea>','',$codigo))){$looptemario=0;}
+if($looptemario){
+$datos[temario].=$codigo;
+}}
+
+
+
+	
+
+
+
+
+}
+
+
+
+
+
+
 print_r($datos);
 print_r($lineas);
 ?>
