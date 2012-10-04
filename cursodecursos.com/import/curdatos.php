@@ -228,6 +228,35 @@ $datos[temario]=html_entity_decode($datos[temario]);
 
 
 
+$lineas=array();
+$c = curl_init('http://procenet:nuevaof21@82.223.155.233:81/categoriza.php?iddelcentro=939&idcurso=820946');
+curl_setopt($c, CURLOPT_VERBOSE, true);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+$page = curl_exec($c);
+curl_close($c);
+$data=str_replace('><',">\n<",$page);
+$lineas=explode("\n",$data); 
+
+
+foreach ($lineas as $pointer => $codigo){
+			
+		
+	
+#categoria
+if(strlen($codigo)>strlen(str_replace('checked','',$codigo))){
+$quitosdecurso=array('<input name="idcatselect" type="radio" value="');
+$newline=explode('"',str_replace($quitosdecurso,'',$codigo));
+$datos[idcategoria]=trim($newline[0]);	
+}
+
+
+
+}	
+
+
+
+
+
 print_r($datos);
 print_r($lineas);
 ?>
