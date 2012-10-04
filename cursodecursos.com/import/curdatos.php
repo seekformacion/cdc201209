@@ -43,10 +43,11 @@ $datos[nomcurso]=trim($newline[0]);
 
 $finnom=strpos($datos[nomcurso],' -');
 if(strpos($datos[nomcurso],' (')<$finnom){$finnom=strpos($datos[nomcurso],' (');};
-$datos[nomcursoalt]=substr($datos[nomcurso],0,$finnom);
+
+$datos[nomcursoalt]=substr($datos[nomcurso],0,$finnom*1);
 
 
-echo strpos($datos[nomcurso],' (');
+echo $finnom;
 
 }
 
