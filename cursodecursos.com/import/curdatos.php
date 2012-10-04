@@ -14,6 +14,7 @@ $lineas=explode("\n",$data);
 
 
 
+$datos[m_precio]=0;
 
 foreach ($lineas as $pointer => $codigo){
 
@@ -80,6 +81,51 @@ if(strlen($codigo)>strlen(str_replace('selected','',$codigo))){
 $newline=explode('"',str_replace($quitosdecurso,'',$codigo))	;
 $datos[idstudiomin]=trim($newline[1]);
 }}
+
+
+#precio
+if(strlen($codigo)>strlen(str_replace('<input name="cur_precio" type="text" class="campos" id="cur_precio" value="','',$codigo))){
+$quitosdecurso=array('<input name="cur_precio" type="text" class="campos" id="cur_precio" value="');
+$newline=explode('" size=',str_replace($quitosdecurso,'',$codigo))	;
+$datos[precio]=trim($newline[0]);	
+}
+
+#mostrar_precio
+if(strlen($codigo)>strlen(str_replace('<input type="checkbox" name="cur_mostarprecio" id="cur_mostarprecio" value="1" checked onclick="','',$codigo))){
+$datos[m_precio]=1;
+}
+
+
+#facilidades
+if(strlen($codigo)>strlen(str_replace('<input name="cur_facilidad" type="text" class="campos" id="cur_facilidad" value="','',$codigo))){
+$quitosdecurso=array('<input name="cur_facilidad" type="text" class="campos" id="cur_facilidad" value="');
+$newline=explode('" size=',str_replace($quitosdecurso,'',$codigo))	;
+$datos[facilidades]=trim($newline[0]);	
+}
+
+
+#practicas
+if(strlen($codigo)>strlen(str_replace('<input name="cur_practicas" type="text" class="campos" id="cur_practicas" value="','',$codigo))){
+$quitosdecurso=array('<input name="cur_practicas" type="text" class="campos" id="cur_practicas" value="');
+$newline=explode('" size=',str_replace($quitosdecurso,'',$codigo))	;
+$datos[practicas]=trim($newline[0]);	
+}
+
+#otrosdatos
+if(strlen($codigo)>strlen(str_replace('<input name="cur_otrosdatos" type="text" class="campos" id="cur_otrosdatos" value="','',$codigo))){
+$quitosdecurso=array('<input name="cur_otrosdatos" type="text" class="campos" id="cur_otrosdatos" value="');
+$newline=explode('" size=',str_replace($quitosdecurso,'',$codigo))	;
+$datos[otrosdatos]=trim($newline[0]);	
+}
+
+
+#duracion
+if(strlen($codigo)>strlen(str_replace('<input name="cur_duracion" type="text" class="campos" id="cur_duracion" value="','',$codigo))){
+$quitosdecurso=array('<input name="cur_duracion" type="text" class="campos" id="cur_duracion" value="');
+$newline=explode('" size=',str_replace($quitosdecurso,'',$codigo))	;
+$datos[duracion]=trim($newline[0]);	
+}
+
 
 
 }
