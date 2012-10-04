@@ -213,10 +213,10 @@ $datos[temario]=str_replace('><',">\n<",$datos[temario]);
 $datos[temario]=str_replace('< /',"</",$datos[temario]);
 
 $codOLD=array(
-'<strong>','</strong>','</p>','<p>'
+'<strong>','</strong>','</p>','<p>','</br>'
 );
 $codNEW=array(
-"[str]","[|str]\n","[|p]","[p]"
+"[str]","[|str]\n","[|p]\n","[p]","[|br]\n"
 );
 
 $datos[temario]=str_replace($codOLD,$codNEW,$datos[temario]);
