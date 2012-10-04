@@ -223,16 +223,19 @@ $datos[temario].=htmlspecialchars_decode($codigo);
 
 }	
 
-$quitos=array('<font face="Times New Roman" color="#000000" size="3">','</font>','<font color="#000000" size="3" face="Times New Roman">','<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">');
+$quitos=array(
+'<span style="FONT-FAMILY: Arial; COLOR: #333399">',
+'<o:p>','</o:p>','</span>',
+'<font face="Times New Roman" color="#000000" size="3">','</font>','<font color="#000000" size="3" face="Times New Roman">','<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">');
 $datos[temario]=str_replace($quitos,'',$datos[temario]);
 $datos[temario]=str_replace('><',">\n<",$datos[temario]);
 $datos[temario]=str_replace('< /',"</",$datos[temario]);
 
 $codOLD=array(
-'<strong>','</strong>','</p>','<p>','</br>','<br />'
+'<strong>','</strong>','</p>','<p>','</br>','<br />','<p class="MsoNormal">','<em>','</em>'
 );
 $codNEW=array(
-"[str]","[|str]\n","\n[|p]\n","\n[p]\n","[|br]\n","[|br]\n"
+"[str]","[|str]\n","\n[|p]\n","\n[p]\n","[|br]\n","[|br]\n","\n[p]\n","\n[em]\n","\n[|em]\n"
 );
 
 $datos[temario]=str_replace($codOLD,$codNEW,$datos[temario]);
