@@ -210,6 +210,15 @@ $datos[temario].=htmlspecialchars_decode($codigo);
 $quitos=array('</font>','<font color="#000000" size="3" face="Times New Roman">','<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">');
 $datos[temario]=str_replace($quitos,'',$datos[temario]);
 $datos[temario]=str_replace('><',">\n<",$datos[temario]);
+
+$codOLD=array(
+'<strong>','<strong>'
+);
+$codNEW=array(
+'[str]','[|str]'
+);
+
+$datos[temario]=str_replace($codOLD,$codNEW,$datos[temario]);
 #$datos[temario]=strip_tags($datos[temario]);
 $datos[temario]=html_entity_decode($datos[temario]);
 
