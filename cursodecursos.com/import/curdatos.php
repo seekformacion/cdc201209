@@ -3,8 +3,21 @@ set_time_limit(0);
 include "../scripts/variables.php";
 
 
-$idc=24815;
-$idcur=757605;
+	
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+	
+$queryp= "SELECT idofer, idcur from import_cursos_si where ok_temp=0 limit 1;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$idc=$row['idofer'];$idcur=$row['idcur'];};			
+
+
+$queryp= "UPDATE import_cursos_si SET ok_temp=1 where idofer=$idc and idcur=$idcur;";
+$dbnivel->query($queryp);
+	
+if (!$dbnivel->close()){die($dbnivel->error());};	
+
+
 
 $lineas=array();
 $c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/fichacurso.php?iddelcentro=$idc&idcurso=$idcur");
@@ -210,7 +223,7 @@ $datos[temario].=htmlspecialchars_decode($codigo);
 
 }	
 
-$quitos=array('</font>','<font color="#000000" size="3" face="Times New Roman">','<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">');
+$quitos=array('<font face="Times New Roman" color="#000000" size="3">','</font>','<font color="#000000" size="3" face="Times New Roman">','<textarea name="cur_temario" rows="4" cols="40" style="width: 385px; height: 320px">');
 $datos[temario]=str_replace($quitos,'',$datos[temario]);
 $datos[temario]=str_replace('><',">\n<",$datos[temario]);
 $datos[temario]=str_replace('< /',"</",$datos[temario]);
