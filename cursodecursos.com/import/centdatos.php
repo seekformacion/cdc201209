@@ -145,6 +145,9 @@ if(strlen($codigo)>strlen(str_replace('name="cp"','',$codigo))){
 $quitosdecurso=array('<input name="cp" type="text" class="campos" value="','" size="3">');
 $datos[sedes][$idsede][cp]=trim(str_replace($quitosdecurso,'',$codigo));	
 }
+
+
+
 # direccion
 if(strlen($codigo)>strlen(str_replace('name="direccion"','',$codigo))){
 $quitosdecurso=array('<input name="direccion" type="text" class="campos" value="','" size="34">');
@@ -308,7 +311,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 	foreach ($datos as $idsed => $valores) {
 		 	$nomsede=$valores['nomsede'];
             $poblacion=$valores['poblacion'];
-           	$cp=$valores['cp'];if(strlen($cp)==4){$cp="0" . $cp;};$idprovi=substr($cp,0,3);
+           	$cp=$valores['cp'];if(strlen($cp)<5){$cp="0" . $cp;};$idprovi=substr($cp,0,3);
             $direccion=$valores['direccion'];
 			
 	$queryp= "INSERT INTO skv_sedes 
