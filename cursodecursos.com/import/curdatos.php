@@ -232,10 +232,10 @@ $datos[temario]=str_replace('><',">\n<",$datos[temario]);
 $datos[temario]=str_replace('< /',"</",$datos[temario]);
 
 $codOLD=array(
-'<strong>','</strong>','</p>','<p>','</br>','<br />','<p class="MsoNormal">','<em>','</em>'
+'<strong style="mso-bidi-font-weight: normal">','<strong>','</strong>','</p>','<p>','</br>','<br />','<p class="MsoNormal">','<em>','</em>'
 );
 $codNEW=array(
-"[str]","[|str]\n","\n[|p]\n","\n[p]\n","[|br]\n","[|br]\n","\n[p]\n","\n[em]\n","\n[|em]\n"
+"[str]","[str]","[|str]\n","\n[|p]\n","\n[p]\n","[|br]\n","[|br]\n","\n[p]\n","\n[em]\n","\n[|em]\n"
 );
 
 $datos[temario]=str_replace($codOLD,$codNEW,$datos[temario]);
