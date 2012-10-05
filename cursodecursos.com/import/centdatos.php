@@ -388,7 +388,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
            		
 			$arraynom=explode("(",$nomsede);
 			$nomcp=trim($arraynom[0]);	
-			$cp=$pro_nom_seek[normaliza($nomcp)];	
+			$cp=$pro_nom_seek[strlolower(normaliza($nomcp))];	
 			if ($cp<10){$cp="0" .$cp;}$cp .="000";
 		}
            	
