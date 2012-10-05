@@ -4,6 +4,10 @@ set_time_limit(0);
 include "../scripts/variables.php";
 
 
+
+
+
+
 function utf8_encode_deep(&$input) {
     if (is_string($input)) {
         $input = utf8_encode($input);
@@ -301,8 +305,73 @@ $datos[provisperfil][tod]=1;
 return $datos;
 }
 
+function normaliza ($cadena){
+    $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ
+ßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+    $modificadas = 'aaaaaaaceeeeiiiidñoooooouuuuy
+bsaaaaaaaceeeeiiiidñoooooouuuyybyRr';
+    $cadena = utf8_decode($cadena);
+    $cadena = strtr($cadena, utf8_decode($originales), $modificadas);
+    $cadena = strtolower($cadena);
+    return utf8_encode($cadena);
+}
+
 
 function inserta_sedes($datos,$idseek){global $conf;
+
+
+$pro_nom_seek['a coruña']=15;
+$pro_nom_seek['alacant']=3;
+$pro_nom_seek['alava']=1;
+$pro_nom_seek['albacete']=2;
+$pro_nom_seek['almeria']=4;
+$pro_nom_seek['asturias']=33;
+$pro_nom_seek['avila']=5;
+$pro_nom_seek['badajoz']=6;
+$pro_nom_seek['balears']=7;
+$pro_nom_seek['barcelona']=8;
+$pro_nom_seek['burgos']=9;
+$pro_nom_seek['caceres']=10;
+$pro_nom_seek['cadiz']=11;
+$pro_nom_seek['cantabria']=39;
+$pro_nom_seek['castello']=12;
+$pro_nom_seek['ceuta']=51;
+$pro_nom_seek['ciudad real']=13;
+$pro_nom_seek['cordoba']=14;
+$pro_nom_seek['cuenca']=16;
+$pro_nom_seek['girona']=17;
+$pro_nom_seek['granada']=18;
+$pro_nom_seek['guadalajara']=19;
+$pro_nom_seek['guipuzcoa']=20;
+$pro_nom_seek['huelva']=21;
+$pro_nom_seek['huesca']=22;
+$pro_nom_seek['jaen']=23;
+$pro_nom_seek['la rioja']=26;
+$pro_nom_seek['las palmas']=35;
+$pro_nom_seek['leon']=24;
+$pro_nom_seek['lleida']=25;
+$pro_nom_seek['lugo']=27;
+$pro_nom_seek['madrid']=28;
+$pro_nom_seek['malaga']=29;
+$pro_nom_seek['melilla']=52;
+$pro_nom_seek['murcia']=30;
+$pro_nom_seek['navarra']=31;
+$pro_nom_seek['ourense']=32;
+$pro_nom_seek['palencia']=34;
+$pro_nom_seek['pontevedra']=36;
+$pro_nom_seek['salamanca']=37;
+$pro_nom_seek['santa cruz de tenerife']=38;
+$pro_nom_seek['segovia']=40;
+$pro_nom_seek['sevilla']=41;
+$pro_nom_seek['soria']=42;
+$pro_nom_seek['tarragona']=43;
+$pro_nom_seek['teruel']=44;
+$pro_nom_seek['toledo']=45;
+$pro_nom_seek['valencia']=46;
+$pro_nom_seek['valladolid']=47;
+$pro_nom_seek['vizcaya']=48;
+$pro_nom_seek['zamora']=49;
+$pro_nom_seek['zaragoza']=50;
 	
 	
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
@@ -311,8 +380,23 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 	foreach ($datos as $idsed => $valores) {
 		 	$nomsede=$valores['nomsede'];
             $poblacion=$valores['poblacion'];
-           	$cp=$valores['cp'];if(strlen($cp)<5){$cp="0" . $cp;};$idprovi=substr($cp,0,3);
+			
+			
+           	$cp=$valores['cp'];
+           	
+           	if(!$cp){
+           		
+			$arraynom=explode("(",$nomsede);
+			$nomcp=trim($arraynom[0]);	
+			$cp=$pro_nom_seek[$nomcp];	
+			if ($cp<10){$cp="0" .$cp;}$cp .="000";
+		}
+           	
+           	if(strlen($cp)<5){$cp="0" . $cp;};$idprovi=substr($cp,0,3);
             $direccion=$valores['direccion'];
+			
+			
+			
 			
 	$queryp= "INSERT INTO skv_sedes 
 	(idcentro,nombre,pais,provincia,poblacion,cp,direccion) 
