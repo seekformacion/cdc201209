@@ -3,6 +3,58 @@ set_time_limit(0);
 include "../scripts/variables.php";
 
 
+$eqip_of_seek[115]="15";
+$eqip_of_seek[114]="03";
+$eqip_of_seek[83]="01";
+$eqip_of_seek[116]="02";
+$eqip_of_seek[117]="04";
+$eqip_of_seek[118]="33";
+$eqip_of_seek[84]="05";
+$eqip_of_seek[105]="06";
+$eqip_of_seek[113]="07";
+$eqip_of_seek[104]="08";
+$eqip_of_seek[103]="09";
+$eqip_of_seek[102]="10";
+$eqip_of_seek[101]="11";
+$eqip_of_seek[109]="39";
+$eqip_of_seek[119]="12";
+$eqip_of_seek[134]="51";
+$eqip_of_seek[112]="13";
+$eqip_of_seek[120]="14";
+$eqip_of_seek[100]="16";
+$eqip_of_seek[111]="17";
+$eqip_of_seek[121]="18";
+$eqip_of_seek[99]="19";
+$eqip_of_seek[98]="20";
+$eqip_of_seek[122]="21";
+$eqip_of_seek[97]="22";
+$eqip_of_seek[110]="23";
+$eqip_of_seek[123]="26";
+$eqip_of_seek[132]="35";
+$eqip_of_seek[124]="24";
+$eqip_of_seek[85]="25";
+$eqip_of_seek[125]="27";
+$eqip_of_seek[126]="28";
+$eqip_of_seek[127]="29";
+$eqip_of_seek[133]="52";
+$eqip_of_seek[128]="30";
+$eqip_of_seek[96]="31";
+$eqip_of_seek[86]="32";
+$eqip_of_seek[129]="34";
+$eqip_of_seek[95]="36";
+$eqip_of_seek[94]="37";
+$eqip_of_seek[130]="38";
+$eqip_of_seek[131]="40";
+$eqip_of_seek[93]="41";
+$eqip_of_seek[92]="42";
+$eqip_of_seek[108]="43";
+$eqip_of_seek[91]="44";
+$eqip_of_seek[90]="45";
+$eqip_of_seek[107]="46";
+$eqip_of_seek[87]="47";
+$eqip_of_seek[106]="48";
+$eqip_of_seek[89]="49";
+$eqip_of_seek[88]="50";	
 	
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
@@ -218,7 +270,24 @@ if(strlen($codigo)>strlen(str_replace('</select>','',$codigo))){$loopdonde=0;}
 if($loopdonde){
 if(strlen($codigo)>strlen(str_replace('selected','',$codigo))){
 $newline=explode('"',str_replace($quitosdecurso,'',$codigo))	;
-$datos[dondeseimparte][]=trim($newline[1]);
+$prosede=$eqip_of_seek[trim($newline[1])];
+
+
+
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+
+$queryp= "SELECT cp from skv_sedes where cp like '%$prosede';";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$datos[dondeseimparte][]=$row[cp];};			
+
+if (!$dbnivel->close()){die($dbnivel->error());};	
+
+
+
+
+
+
 }}
 
 
