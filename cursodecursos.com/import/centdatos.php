@@ -91,6 +91,16 @@ $quitosdecurso=array('<input name="tipodecentro" type="radio" value="','" checke
 $datos[tipocent]=trim(str_replace($quitosdecurso,'',$codigo));	
 }
 
+if(strlen($codigo)>strlen(str_replace('<input name="cent_tipodeformotros" type="text" class="campos" size="45" value="','',$codigo))){
+$quitosdecurso=array('<input name="cent_tipodeformotros" type="text" class="campos" size="45" value="');
+$newline=explode('"',str_replace($quitosdecurso,'',$codigo));
+$otrotipocent=trim($newline[0]);	
+if($otrotipocent){$datos[tipocent]=$otrotipocent;};
+}
+
+
+
+
 }
 
 
