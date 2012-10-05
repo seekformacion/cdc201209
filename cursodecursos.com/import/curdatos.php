@@ -59,9 +59,9 @@ $eqip_of_seek[88]="50";
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
 	
-$queryp= "SELECT idofer, idcur from import_cursos_si where ok_temp=0 limit 1;";
+$queryp= "SELECT idofer, idcur, idseek from import_cursos_si where ok_temp=0 limit 1;";
 $dbnivel->query($queryp);
-while ($row = $dbnivel->fetchassoc()){$idc=$row['idofer'];$idcur=$row['idcur'];};			
+while ($row = $dbnivel->fetchassoc()){$idc=$row['idofer'];$idcur=$row['idcur'];$idcentseek=$row[idseek];};			
 
 
 $queryp= "UPDATE import_cursos_si SET ok_temp=1 where idofer=$idc and idcur=$idcur;";
@@ -277,7 +277,7 @@ $prosede=$eqip_of_seek[trim($newline[1])];
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
 
-$queryp= "SELECT cp from skv_sedes where cp like '%$prosede';";
+$queryp= "SELECT cp from skv_sedes where cp like '$prosede%' and idcentro=$idcentseek;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){$datos[dondeseimparte][]=$row[cp];};			
 
