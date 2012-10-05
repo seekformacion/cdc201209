@@ -583,7 +583,7 @@ while ($row = $dbnivel->fetchassoc()){$idseek=$row['id'];};
 
 
 if(!$idseek){
-echo $falla;	
+echo $falla;$fallo=1;
 }else{
 $queryp= "INSERT INTO import_centro (idofer,idseek,datos) values (". $datos['idc'] . ",$idseek,1);";
 $dbnivel->query($queryp);
@@ -597,7 +597,8 @@ if(count($datos['sedes'])>0){inserta_sedes($datos['sedes'], $idseek);};
 if(count($datos['contactos'])>0){inserta_contactos($datos['contactos'], $idseek);	};	
 if(count($datos['campos'])>0){inserta_campos($datos['campos'], $idseek);	};		
 }		
-	
+
+return $fallo;	
 }
 
 
@@ -616,10 +617,10 @@ $datos=datos_centro($idc);
 $datos['idc']=$idc;
 utf8_encode_deep($datos);
 
-insterta_centro($datos);
+$fallo=insterta_centro($datos);
 
 
-
+if(!$fallo){
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "UPDATE import_listcentros_a_importar set hecho=1 where idofer=$idc;";
@@ -648,5 +649,5 @@ Insertados centro: ' . $idc . '
 </html>
 
 ';
-
+}
 ?>
