@@ -584,6 +584,7 @@ while ($row = $dbnivel->fetchassoc()){$idseek=$row['id'];};
 
 if(!$idseek){
 echo $falla;$fallo=1;
+print_r($datos);
 }else{
 $queryp= "INSERT INTO import_centro (idofer,idseek,datos) values (". $datos['idc'] . ",$idseek,1);";
 $dbnivel->query($queryp);
