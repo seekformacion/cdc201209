@@ -482,8 +482,8 @@ $cur_mostrarprecio,
 '$temario',
 '$cur_id_certificado',
 '$cur_palclave',
-$cur_minestudi,
-$cur_cat
+'$cur_minestudi',
+'$cur_cat'
 );";
 
 $dbnivel->query($queryp);
@@ -588,7 +588,7 @@ function timedRefresh(timeoutPeriod) {
 //   -->
 </script>
 </head>
-<body onload="JavaScript:timedRefresh(1000);">
+<body onload="JavaScript:timedRefresh(50);">
 <p>
 ';
 echo "------------------------------------ \n";
