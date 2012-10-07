@@ -88,7 +88,8 @@ foreach ($lineas as $pointer => $codigo){
 #tipo de centro
 if(strlen($codigo)>strlen(str_replace('checked','',$codigo))){
 $quitosdecurso=array('<input name="tipodecentro" type="radio" value="','" checked onclick="javascript:cambiosradio(\'tipodecentro\',\'academia\');cambio2();cambios();">');
-$datos[tipocent]=trim(str_replace($quitosdecurso,'',$codigo));	
+$newcode=explode('"',trim(str_replace($quitosdecurso,'',$codigo)));
+$datos[tipocent]=$newcode[0];	
 }
 
 if(strlen($codigo)>strlen(str_replace('<input name="cent_tipodeformotros" type="text" class="campos" size="45" value="','',$codigo))){
@@ -457,15 +458,17 @@ if (!$dbnivel->open()){die($dbnivel->error());};
            	if(strlen($cp)<5){$cp="0" . $cp;};$idprovi=substr($cp,0,3);
             $direccion=$valores['direccion'];
 			
-			
-			
+		$idcheck="";	
+	$queryp= "SELECT id from skv_sedes where idcentro=$idseek and cp=$cp;";
+	$dbnivel->query($queryp);
+	while ($row = $dbnivel->fetchassoc()){$idcheck=$row['id'];};		
 			
 	$queryp= "INSERT INTO skv_sedes 
 	(idcentro,nombre,pais,provincia,poblacion,cp,direccion) 
 	VALUES 
 	($idseek,'$nomsede','8','$idprovi','$poblacion','$cp','$direccion');";
 	
-	$dbnivel->query($queryp);
+	if(!$idcheck){$dbnivel->query($queryp);};
 	
 	
 	
@@ -583,20 +586,37 @@ global $conf;
 
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
-$queryp= "INSERT INTO skv_centros (id_old,nombre,descripcion,web,telefono,tipocentro,urlpixel,ext_logo) VALUES (" . $datos['idc'] . ",'" . $datos['nomcentro'] . "','" . $datos['descripcion'] . "','" . $datos['web'] . "','" . $datos['tlf'] . "','" . $datos['tipocent'] . "','" . $datos['urlpixel'] . "','gif');";
+$queryp= "SELECT idofer, idfusion from import_listcentros_a_importar where idofer=" . $datos['idc'] .";";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$idfusion=$row['idfusion'];$ids=$row['idseek'];};		
+$Idofe=$datos['idc'];
+if($idfusion){
+	
+		
+	$datos['idc']=$idfusion;
+	
+$queryp= "SELECT id from skv_centros where id_old=" . $datos['idc'] .";";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$ids=$row['id'];};	
+	
+	$idseek=$ids;
+}else{
+
+
+$queryp= "INSERT INTO skv_centros (id_old,nombre,descripcion,web,telefono,tipocentro,urlpixel,ext_logo) VALUES (" . $datos['idc'] . ",'" . addslashes($datos['nomcentro']) . "','" . addslashes($datos['descripcion']) . "','" . $datos['web'] . "','" . $datos['tlf'] . "','" . $datos['tipocent'] . "','" . $datos['urlpixel'] . "','gif');";
 $dbnivel->query($queryp);
 $falla=$queryp;
 
 $queryp= "SELECT LAST_INSERT_ID() as id;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){$idseek=$row['id'];};
-
+}
 
 if(!$idseek){
 echo $falla;$fallo=1;
 print_r($datos);
 }else{
-$queryp= "INSERT INTO import_centro (idofer,idseek,datos) values (". $datos['idc'] . ",$idseek,1);";
+$queryp= "INSERT INTO import_centro (idofer,idseek,datos) values (". $Idofe . ",$idseek,1);";
 $dbnivel->query($queryp);
 
 
@@ -606,7 +626,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 					
 if(count($datos['sedes'])>0){inserta_sedes($datos['sedes'], $idseek);};		
 if(count($datos['contactos'])>0){inserta_contactos($datos['contactos'], $idseek);	};	
-if(count($datos['campos'])>0){inserta_campos($datos['campos'], $idseek);	};		
+if((!$idfusion)&&(count($datos['campos'])>0)){inserta_campos($datos['campos'], $idseek);	};		
 }		
 
 return $fallo;	

@@ -1,75 +1,31 @@
 <?php
 set_time_limit(0);
 include "../scripts/variables.php";
+include "../scripts/valores.php";
+
+function utf8_encode_deep(&$input) {
+    if (is_string($input)) {
+        $input = utf8_encode($input);
+    } else if (is_array($input)) {
+        foreach ($input as &$value) {
+            utf8_encode_deep($value);
+        }
+
+        unset($value);
+    } else if (is_object($input)) {
+        $vars = array_keys(get_object_vars($input));
+
+        foreach ($vars as $var) {
+            utf8_encode_deep($input->$var);
+        }
+    }
+}
 
 
-$eqip_of_seek[115]="15";
-$eqip_of_seek[114]="03";
-$eqip_of_seek[83]="01";
-$eqip_of_seek[116]="02";
-$eqip_of_seek[117]="04";
-$eqip_of_seek[118]="33";
-$eqip_of_seek[84]="05";
-$eqip_of_seek[105]="06";
-$eqip_of_seek[113]="07";
-$eqip_of_seek[104]="08";
-$eqip_of_seek[103]="09";
-$eqip_of_seek[102]="10";
-$eqip_of_seek[101]="11";
-$eqip_of_seek[109]="39";
-$eqip_of_seek[119]="12";
-$eqip_of_seek[134]="51";
-$eqip_of_seek[112]="13";
-$eqip_of_seek[120]="14";
-$eqip_of_seek[100]="16";
-$eqip_of_seek[111]="17";
-$eqip_of_seek[121]="18";
-$eqip_of_seek[99]="19";
-$eqip_of_seek[98]="20";
-$eqip_of_seek[122]="21";
-$eqip_of_seek[97]="22";
-$eqip_of_seek[110]="23";
-$eqip_of_seek[123]="26";
-$eqip_of_seek[132]="35";
-$eqip_of_seek[124]="24";
-$eqip_of_seek[85]="25";
-$eqip_of_seek[125]="27";
-$eqip_of_seek[126]="28";
-$eqip_of_seek[127]="29";
-$eqip_of_seek[133]="52";
-$eqip_of_seek[128]="30";
-$eqip_of_seek[96]="31";
-$eqip_of_seek[86]="32";
-$eqip_of_seek[129]="34";
-$eqip_of_seek[95]="36";
-$eqip_of_seek[94]="37";
-$eqip_of_seek[130]="38";
-$eqip_of_seek[131]="40";
-$eqip_of_seek[93]="41";
-$eqip_of_seek[92]="42";
-$eqip_of_seek[108]="43";
-$eqip_of_seek[91]="44";
-$eqip_of_seek[90]="45";
-$eqip_of_seek[107]="46";
-$eqip_of_seek[87]="47";
-$eqip_of_seek[106]="48";
-$eqip_of_seek[89]="49";
-$eqip_of_seek[88]="50";	
-	
-$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
-if (!$dbnivel->open()){die($dbnivel->error());};
-	
-$queryp= "SELECT idofer, idcur, idseek from import_cursos_si where ok_temp=0 limit 1;";
-$dbnivel->query($queryp);
-while ($row = $dbnivel->fetchassoc()){$idc=$row['idofer'];$idcur=$row['idcur'];$idcentseek=$row[idseek];};			
 
-
-$queryp= "UPDATE import_cursos_si SET ok_temp=1 where idofer=$idc and idcur=$idcur;";
-$dbnivel->query($queryp);
-	
-if (!$dbnivel->close()){die($dbnivel->error());};	
-
-
+function datoscurso($idc,$idcur,$idcentseek){
+global $conf;
+global $eqip_of_seek;
 
 $lineas=array();
 $c = curl_init("http://procenet:nuevaof21@82.223.155.233:81/fichacurso.php?iddelcentro=$idc&idcurso=$idcur");
@@ -99,8 +55,6 @@ if( (strpos($datos[nomcurso],' (')<$finnom) && (strpos($datos[nomcurso],' (')>0)
 
 $datos[nomcursoalt]=substr($datos[nomcurso],0,$finnom*1);
 
-
-echo $finnom;
 
 }
 
@@ -397,10 +351,261 @@ $datos[palclave]=trim($newline[0]);
 
 }	
 
+return $datos;
+}
 
 
 
 
-print_r($datos);
-print_r($lineas);
+function BuscoMismoCurso($datos,$idcentseek){
+global $conf;global $idequi_idtipcur_ofer_seek;global $idequi_idmet_ofer_seek;
+echo "Busco el curso del que es duplicado \n";	
+
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+
+$idp=$datos[idcurpropio];$cod1=$datos[cod1];$cod2=$datos[cod2];
+$nombrecur=addslashes($datos[nomcursoalt]);
+$nombrecur_old=addslashes($datos[nomcurso]);
+$id_tipo_curso=$idequi_idtipcur_ofer_seek[$datos[idtipocurso]];
+$id_metodo=$idequi_idmet_ofer_seek[$datos[idmetodo]];
+
+
+$query1= "select id from skv_cursos where 
+id_centro=$idcentseek AND 
+cur_id_curso_propio='$idp' AND 
+cur_otro_codigo1='$cod1' AND 
+cur_otro_codigo2='$cod2';";
+
+$query2= "select id from skv_cursos where 
+id_centro=$idcentseek AND 
+nombre like '$nombrecur' AND cur_id_metodo=$id_metodo;";
+
+if(!$idcursoyainsertado){$dbnivel->query($query1);};
+while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];};
+
+if(!$idcursoyainsertado){$dbnivel->query($query2);};
+while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];};
+
+
+
+return $idcursoyainsertado;
+
+
+}
+
+
+
+
+function InsertaDatosGlobales($datos,$idcentseek,$idcurofe){
+global $conf;global $idequi_idtipcur_ofer_seek;global $idequi_idmet_ofer_seek;
+
+echo "Creo un curso nuebo con sus datos globales \n";		
+
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+
+$idp=$datos[idcurpropio];$cod1=$datos[cod1];$cod2=$datos[cod2];
+$nombrecur=addslashes($datos[nomcursoalt]);
+$nombrecur_old=addslashes($datos[nomcurso]);
+$id_tipo_curso=$idequi_idtipcur_ofer_seek[$datos[idtipocurso]];
+$id_metodo=$idequi_idmet_ofer_seek[$datos[idmetodo]];
+$cur_titoficial=addslashes($datos[titoficial]);
+$cur_precio=addslashes($datos[precio]);
+$cur_mostrarprecio=addslashes($datos[m_precio]);
+$cur_facilidad=addslashes($datos[facilidades]);
+$cur_practicas=addslashes($datos[practicas]);
+$cur_otrosdatos=addslashes($datos[otrosdatos]);
+$cur_duracion=addslashes($datos[duracion]);
+$cur_descripcion=addslashes($datos[descripcion]);
+$cur_dirigidoa=addslashes($datos[dirigidoa]);
+$cur_paraqueteprepara=addslashes($datos[paraqueteprepara]);
+$cur_edadmin=addslashes($datos[edadmin]);
+$cur_edadmax=addslashes($datos[edadmax]);
+$temario=addslashes($datos[temario]);
+$cur_id_certificado=$datos[idcertificado];
+$cur_palclave=addslashes($datos[palclave]);
+$cur_minestudi=$datos[idstudiomin];
+$cur_cat=$datos[idcategoria];
+
+
+
+$queryp= "INSERT INTO skv_cursos (
+id_centro, 
+id_old, 
+nombre, 
+nombre_viejo, 
+cur_id_curso_propio, 
+cur_otro_codigo1, 
+cur_otro_codigo2, 
+cur_id_tipocurso, 
+cur_id_metodo, 
+cur_titoficial, 
+cur_precio, 
+cur_mostarprecio, 
+cur_facilidad, 
+cur_practicas, 
+cur_otrosdatos, 
+cur_duracion, 
+cur_descripcion, 
+cur_dirigidoa, 
+cur_paraqueteprepara, 
+cur_edadmin, 
+cur_edadmax, 
+temario, 
+cur_id_certificado, 
+cur_palclave, 
+cur_minestudi, 
+cur_cat
+) VALUES (
+$idcentseek,
+$idcurofe,
+'$nombrecur',
+'$nombrecur_old',
+'$idp',
+'$cod1',
+'$cod2',
+$id_tipo_curso,
+$id_metodo,
+'$cur_titoficial',
+'$cur_precio',
+$cur_mostrarprecio,
+'$cur_facilidad',
+'$cur_practicas',
+'$cur_otrosdatos',
+'$cur_duracion',
+'$cur_descripcion',
+'$cur_dirigidoa',
+'$cur_paraqueteprepara',
+'$cur_edadmin',
+'$cur_edadmax',
+'$temario',
+'$cur_id_certificado',
+'$cur_palclave',
+$cur_minestudi,
+$cur_cat
+);";
+
+$dbnivel->query($queryp);
+
+$queryp= "SELECT LAST_INSERT_ID() as id;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$idnew=$row['id'];};
+
+return $idnew;
+
+}
+
+
+function Inserto_provis($provis,$newIdcur){
+global $conf;
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};		
+
+foreach ($provis as $pointer => $idpro) {
+$id=0;			
+$queryp= "SELECT id from skv_relCurPro where idcur=$newIdcur AND idpro=$idpro;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$id=$row['id'];};		
+if(!$id){	
+$queryp= "INSERT INTO skv_relCurPro (idcur,idpro) VALUES ($newIdcur,$idpro)";
+$dbnivel->query($queryp);	
+}
+}
+
+if (!$dbnivel->close()){die($dbnivel->error());};	
+}
+
+
+
+
+
+
+
+
+
+######################################
+#####################################
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+	
+$queryp= "SELECT idofer, idcur, idseek from import_cursos_si where ok_temp=0 limit 1;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$idc=$row['idofer'];$idcur=$row['idcur'];$idcentseek=$row[idseek];};			
+
+$queryp= "SELECT id_old from skv_centros where id=$idcentseek;";
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){$idofetainsertado=$row['id_old'];};			
+
+echo "Id ofertade este curso :$idc id ya insertado: $idofetainsertado IDseekdefinitivo:$idcentseek \n";
+
+
+if (!$dbnivel->close()){die($dbnivel->error());};	
+
+######################################
+#####################################
+
+
+
+$datos=datoscurso($idc,$idcur,$idcentseek);####### Obtengo los datos
+utf8_encode_deep($datos);
+
+######################################
+##################################### INSERCION DE DATOS
+$fusionado=0;
+if($idc != $idofetainsertado){$fusionado=1;};
+
+
+
+if($fusionado)					{$newIdcur=BuscoMismoCurso($datos,$idcentseek);}else
+								{$newIdcur=InsertaDatosGlobales($datos,$idcentseek,$idcur);};
+if(!$newIdcur)					{$newIdcur=InsertaDatosGlobales($datos,$idcentseek,$idcur);};
+
+
+
+
+ if($newIdcur){
+
+Inserto_provis($datos[dondeseimparte],$newIdcur);
+echo $newIdcur;	
+
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+$queryp= "UPDATE import_cursos_si SET ok_temp=1 where idofer=$idc and idcur=$idcur;";
+$dbnivel->query($queryp);
+if (!$dbnivel->close()){die($dbnivel->error());};
+
+
+echo '
+
+<html>
+<head>
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+//   -->
+</script>
+</head>
+<body onload="JavaScript:timedRefresh(1000);">
+<p>
+';
+echo "------------------------------------ \n";
+echo "http://82.223.155.233:81/fichacurso.php?iddelcentro=$idc&idcurso=$idcur";
+echo "\n\n------------------------------------ \n\n\n";
+echo '
+</p>
+</body>
+</html>
+
+';
+
+
+
+}
+
+
+#print_r($datos);
+#print_r($lineas);
 ?>

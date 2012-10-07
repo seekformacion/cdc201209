@@ -61,10 +61,10 @@ $queryp= "insert into import_cursos_no (idseek,idofer,idcur) values ($idseek,$id
 $dbnivel->query($queryp);	
 }}
 
-$queryp= "update import_centro set cproce=cproce + $contador where idseek=$idseek;";
+$queryp= "update import_centro set cproce=cproce + $contador where idofer=$idofer;";
 $dbnivel->query($queryp);
 
-$queryp= "update import_centro set ctotal=$total where idseek=$idseek;";
+$queryp= "update import_centro set ctotal=$total where idofer=$idofer;";
 $dbnivel->query($queryp);
 
 #print_r($cursos);
