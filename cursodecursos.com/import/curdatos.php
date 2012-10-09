@@ -502,6 +502,7 @@ global $conf;
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};		
 
+if(count($provis)>0){
 foreach ($provis as $pointer => $idpro) {
 $id=0;			
 $queryp= "SELECT id from skv_relCurPro where idcur=$newIdcur AND idpro=$idpro;";
@@ -511,7 +512,7 @@ if(!$id){
 $queryp= "INSERT INTO skv_relCurPro (idcur,idpro) VALUES ($newIdcur,$idpro)";
 $dbnivel->query($queryp);	
 }
-}
+}}
 
 if (!$dbnivel->close()){die($dbnivel->error());};	
 }
