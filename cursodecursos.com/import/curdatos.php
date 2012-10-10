@@ -589,7 +589,7 @@ function timedRefresh(timeoutPeriod) {
 //   -->
 </script>
 </head>
-<body onload="JavaScript:timedRefresh(50);">
+<body onload="JavaScript:timedRefresh(120);">
 <p>
 ';
 echo "------------------------------------ \n";
