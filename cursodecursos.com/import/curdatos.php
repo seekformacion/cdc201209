@@ -377,8 +377,6 @@ if($cod2){$sql .=" AND cur_otro_codigo2='$cod2'";$count++;};
 
 $query1= "select id, nombre, nombre_viejo from skv_cursos where 
 id_centro=$idcentseek $sql;";
-echo $query1;
-
 
 
 $query2= "select id, nombre, nombre_viejo from skv_cursos where 
