@@ -371,11 +371,12 @@ $id_tipo_curso=$idequi_idtipcur_ofer_seek[$datos[idtipocurso]];
 $id_metodo=$idequi_idmet_ofer_seek[$datos[idmetodo]];
 
 
+if($idp){$sql  .=" AND cur_id_curso_propio='$idp'";};
+if($cod1){$sql .=" AND cur_otro_codigo1='$cod1'";};
+if($cod2){$sql .=" AND cur_otro_codigo2='$cod2'";};
+
 $query1= "select id, nombre, nombre_viejo from skv_cursos where 
-id_centro=$idcentseek AND 
-cur_id_curso_propio='$idp' AND 
-cur_otro_codigo1='$cod1' AND 
-cur_otro_codigo2='$cod2';";
+id_centro=$idcentseek $sql;";
 echo $query1;
 
 
