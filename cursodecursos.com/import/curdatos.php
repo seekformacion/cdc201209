@@ -487,7 +487,7 @@ $cur_mostrarprecio,
 );";
 
 $dbnivel->query($queryp);
-
+echo $queryp;
 $queryp= "SELECT LAST_INSERT_ID() as id;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){$idnew=$row['id'];};
