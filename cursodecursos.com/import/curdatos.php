@@ -390,7 +390,7 @@ if($cod1){$sql .=" AND cur_otro_codigo1='$cod1'";$count++;};
 if($cod2){$sql .=" AND cur_otro_codigo2='$cod2'";$count++;};
 
 $query1= "select id, nombre, nombre_viejo from skv_cursos where 
-id_centro=$idcentseek $sql;";
+id_centro=$idcentseek AND cur_id_metodo=$id_metodo $sql;";
 
 
 $query2= "select id, nombre, nombre_viejo from skv_cursos where 
