@@ -371,7 +371,7 @@ $id_tipo_curso=$idequi_idtipcur_ofer_seek[$datos[idtipocurso]];
 $id_metodo=$idequi_idmet_ofer_seek[$datos[idmetodo]];
 
 
-$query1= "select id from skv_cursos where 
+$query1= "select id, nombre, nombre_viejo from skv_cursos where 
 id_centro=$idcentseek AND 
 cur_id_curso_propio='$idp' AND 
 cur_otro_codigo1='$cod1' AND 
@@ -382,10 +382,10 @@ id_centro=$idcentseek AND
 nombre like '$nombrecur' AND cur_id_metodo=$id_metodo;";
 
 if(!$idcursoyainsertado){$dbnivel->query($query1);};
-while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];};
+while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];;$nombreya=$row['nombre'];$nombreviejoya=$row['nombre_viejo'];};
 
 if(!$idcursoyainsertado){$dbnivel->query($query2);};
-while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];$nombreya=$row[nombre];$nombreviejoya=$row[nombre_viejo];};
+while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];$nombreya=$row['nombre'];$nombreviejoya=$row['nombre_viejo'];};
 
 if($nombreya){
 	echo "$nombrecur  -->  $nombrecur_old <br>\n";
