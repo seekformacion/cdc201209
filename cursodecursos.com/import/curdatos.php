@@ -359,7 +359,7 @@ return $datos;
 
 function BuscoMismoCurso($datos,$idcentseek){
 global $conf;global $idequi_idtipcur_ofer_seek;global $idequi_idmet_ofer_seek;
-echo "Busco el curso del que es duplicado \n";	
+echo "Busco el curso del que es duplicado <br>\n";	
 
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
@@ -377,7 +377,7 @@ cur_id_curso_propio='$idp' AND
 cur_otro_codigo1='$cod1' AND 
 cur_otro_codigo2='$cod2';";
 
-$query2= "select id from skv_cursos where 
+$query2= "select id, nombre, nombre_viejo from skv_cursos where 
 id_centro=$idcentseek AND 
 nombre like '$nombrecur' AND cur_id_metodo=$id_metodo;";
 
@@ -385,9 +385,12 @@ if(!$idcursoyainsertado){$dbnivel->query($query1);};
 while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];};
 
 if(!$idcursoyainsertado){$dbnivel->query($query2);};
-while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];};
+while ($row = $dbnivel->fetchassoc()){$idcursoyainsertado=$row['id'];$nombreya=$row[nombre];$nombreviejoya=$row[nombre_viejo];};
 
-
+if($nombreya){
+	echo "$nombrecur  -->  $nombrecur_old <br>\n";
+	echo "$nombreya  -->  $nombreviejoya <br>\n";
+}
 
 return $idcursoyainsertado;
 
