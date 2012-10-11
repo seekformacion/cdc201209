@@ -523,6 +523,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 
 if(count($provis)>0){
 foreach ($provis as $pointer => $idpro) {
+	if(strlen($idpro)<5){$idpro="0" . $idpro;};
 $id=0;			
 $queryp= "SELECT id from skv_relCurPro where idcur=$newIdcur AND idpro=$idpro;";
 $dbnivel->query($queryp);
