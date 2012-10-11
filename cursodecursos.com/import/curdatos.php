@@ -1,3 +1,17 @@
+
+<html>
+<head>
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+//   -->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
 <?php
 set_time_limit(0);
 include "../scripts/variables.php";
@@ -583,16 +597,6 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 echo '
 
-<html>
-<head>
-<script type="text/JavaScript">
-<!--
-function timedRefresh(timeoutPeriod) {
-	setTimeout("location.reload(true);",timeoutPeriod);
-}
-//   -->
-</script>
-</head>
 <body onload="JavaScript:timedRefresh(120);">
 <p>
 ';
