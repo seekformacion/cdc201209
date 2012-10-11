@@ -487,7 +487,7 @@ cur_cat
 );";
 
 $dbnivel->query($queryp);
-echo $queryp;
+#echo $queryp;
 $queryp= "SELECT LAST_INSERT_ID() as id;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){$idnew=$row['id'];};
@@ -558,9 +558,8 @@ if($idc != $idofetainsertado){$fusionado=1;};
 
 
 
-if($fusionado)					{$newIdcur=BuscoMismoCurso($datos,$idcentseek);}else
-								{$newIdcur=InsertaDatosGlobales($datos,$idcentseek,$idcur);};
-if(!$newIdcur)					{$newIdcur=InsertaDatosGlobales($datos,$idcentseek,$idcur);};
+$newIdcur=BuscoMismoCurso($datos,$idcentseek);
+if(!$newIdcur){$newIdcur=InsertaDatosGlobales($datos,$idcentseek,$idcur);};
 
 
 
