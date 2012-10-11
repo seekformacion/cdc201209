@@ -525,11 +525,11 @@ if(count($provis)>0){
 foreach ($provis as $pointer => $idpro) {
 	if(strlen($idpro)<5){$idpro="0" . $idpro;};
 $id=0;			
-$queryp= "SELECT id from skv_relCurPro where idcur=$newIdcur AND idpro=$idpro;";
+$queryp= "SELECT id from skv_relCurPro where idcur=$newIdcur AND idpro='$idpro';";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){$id=$row['id'];};		
 if(!$id){	
-$queryp= "INSERT INTO skv_relCurPro (idcur,idpro) VALUES ($newIdcur,$idpro)";
+$queryp= "INSERT INTO skv_relCurPro (idcur,idpro) VALUES ($newIdcur,'$idpro')";
 $dbnivel->query($queryp);	
 }
 }}
