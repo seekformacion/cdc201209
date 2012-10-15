@@ -33,6 +33,7 @@ if($nombre_corto){$nombre=$nombre_corto;};
 
 if($idseek){
 $nombre=normaliza($nombre);
+$nombre=trim(str_replace(" - ","-",$nombre));
 $nombre=trim(str_replace(" ","_",$nombre));
 
 $tiposmime[1]="gif";$tiposmime[2]="jpg";$tiposmime[3]="png";$tiposmime[4]="swf";$tiposmime[5]="psd";$tiposmime[6]="bmp";$tiposmime[7]="tif";$tiposmime[8]="tif";$tiposmime[9]="jpc";$tiposmime[10]="jp2";$tiposmime[11]="jpx";$tiposmime[12]="jb2";$tiposmime[13]="swc";$tiposmime[14]="iff";$tiposmime[15]="wbmp";$tiposmime[16]="xbm";$tiposmime[17]="ico";
