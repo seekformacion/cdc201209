@@ -20,6 +20,10 @@ $javascriptFiles .=JvSfiles ('js/form.js',$where[design]);
 $DatosLandingCat=metas($where[idcatcur]);
 #$d_layout[metas]=$DatosLandingCat[metas];
 
+
+$d_layout=GetDATFromCUR($where[idrel]);###### Cargo valores del curso
+
+
 $d_layout[urlICONOS]=GetSKINPath('iconos/iconos.png',$where[design]);
 $d_layout[idcatcur]=imgcat($where[idcatcur]);
 $d_layout[styles]=$styles;

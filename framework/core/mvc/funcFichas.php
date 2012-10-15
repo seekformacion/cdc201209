@@ -25,4 +25,36 @@ if(!$where[design]){$where[design]=$design;}
 }
 
 
+
+
+function GetDATFromCUR($idcur){
+
+
+global $paths;
+global $vars;
+global $conf;
+global $where;	
+
+
+
+$dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
+if (!$dbnivel->open()){die($dbnivel->error());};
+$queryp= "select * from skv_cursos where id=$idcur;";
+
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){
+
+$DatCur[nombre]=$row[nombre];
+}
+
+if (!$dbnivel->close()){die($dbnivel->error());};
+
+return $DatCur;
+
+}
+
+
+
+
+
 ?>
