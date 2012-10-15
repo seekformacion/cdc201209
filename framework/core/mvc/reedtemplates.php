@@ -267,11 +267,8 @@ $codigo="";
 
 if(count($minicodigo) > 0){foreach ($minicodigo[$que2] as $lineac){$codigo .=$lineac;};};
 
-
-echo "\n----------" . print_r($valores);
-
 if(count($valores) > 0){
-foreach($valores as $cual){
+foreach($valores as $notdo => $cual){
 	
 $codigo2 .=$codigo;
 foreach($cual as $key => $valor){
