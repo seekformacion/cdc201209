@@ -264,11 +264,12 @@ foreach ($recursividad as $que2 => $valores){
 $codigo2="";
 $codigo="";
 
-foreach ($minicodigo[$que2] as $lineac){$codigo .=$lineac;};
+
+if(count($minicodigo)>0){foreach ($minicodigo[$que2] as $lineac){$codigo .=$lineac;};};
 
 
 
-foreach($valores as $cual){
+if(count($valores)>0){foreach($valores as $cual){
 	
 $codigo2 .=$codigo;
 foreach($cual as $key => $valor){
@@ -276,7 +277,7 @@ $key="%" .$key . "%";
 $codigo2=str_replace($key,$valor,$codigo2);	
 }
 
-}	
+}}
 
 $codigotot[$que2]=$codigo2;	
 	
