@@ -199,7 +199,7 @@ if(count($lineas2)>0){
 foreach($lineas2 as $line){
 	
 	$pattern="<!--(.*)-->";
-	$html=ereg_replace($pattern,"", $html);
+	$html=preg_replace($pattern,"", $html);
 	$html .=$line . "\n";
 	
 }	}
