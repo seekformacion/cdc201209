@@ -269,7 +269,8 @@ if(count($minicodigo) > 0){foreach ($minicodigo[$que2] as $lineac){$codigo .=$li
 
 
 
-if(count($valores) > 0){ foreach($valores as $cual){
+if(count($valores) > 0){
+foreach($valores as $cual){
 	
 $codigo2 .=$codigo;
 foreach($cual as $key => $valor){
