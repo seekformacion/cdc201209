@@ -20,13 +20,16 @@ bsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
 global $conf;
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
-$queryp= "select id, id_old, nombre from skv_centros where id in(select id from import_centro where logos = 0) limit 1;";
+$queryp= "select id, id_old, nombre, nombre_corto from skv_centros where id in(select id from import_centro where logos = 0) limit 1;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 	$idseek=$row['id'];
 	$idofer=$row['id_old'];
-	$nombre=$row['nombre'];	
+	$nombre=$row['nombre'];
+	$nombre_corto=$row['nombre_corto'];		
 }	
+
+if($nombre_corto){$nombre=$nombre_corto;};
 
 if($idseek){
 $nombre=normaliza($nombre);
@@ -69,7 +72,7 @@ function timedRefresh(timeoutPeriod) {
 //   -->
 </script>
 </head>
-<body onload="JavaScript:timedRefresh(1000);">
+<body onload="JavaScript:timedRefresh(6000);">
 <p>
 
 Insertado logotipo ' . "$nombre.$ext" . '
