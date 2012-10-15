@@ -61,7 +61,7 @@ $queryp= "select idpro from skv_relCurPro where idcur=$idcur;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 	
-$cospos=substr($row[idpro],0,2) . "0";	
+$codpos=substr($row[idpro],0,2) . "0";	
 $DatCur[listCOD] .= "<div class='provi P$codpos'></div>";
 
 
