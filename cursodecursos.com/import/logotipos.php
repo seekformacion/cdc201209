@@ -20,7 +20,7 @@ bsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
 global $conf;
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
-$queryp= "select id, id_old, nombre, nombre_corto from skv_centros where id in(select id from import_centro where logos = 0) limit 1;";
+$queryp= "select id, id_old, nombre, nombre_corto from skv_centros where id in(select idseek from import_centro where logos = 0) limit 1;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 	$idseek=$row['id'];
