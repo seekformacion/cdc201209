@@ -56,6 +56,17 @@ $DatCur[nom_centro]=$row[nombre];
 $DatCur[file_logo]=$row[file_logo];
 }
 
+$queryp= "select idpro from skv_relCurPro where idcur=$idcur;";
+
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){
+	
+$cospos=substr($row[idpro],0,2) . "0";	
+$DatCur[listCOD] .= "<div class='provi P$codpos'></div>";
+
+
+}
+
 
 
 if (!$dbnivel->close()){die($dbnivel->error());};
