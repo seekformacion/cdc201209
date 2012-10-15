@@ -47,7 +47,20 @@ while ($row = $dbnivel->fetchassoc()){
 $DatCur=$row;
 }
 
+
+$queryp= "select * from skv_centros where id=$DatCur[id_centro];";
+
+$dbnivel->query($queryp);
+while ($row = $dbnivel->fetchassoc()){
+$DatCur[nom_centro]=$row[nombre];
+$DatCur[file_logo]=$row[file_logo];
+}
+
+
+
 if (!$dbnivel->close()){die($dbnivel->error());};
+
+
 
 return $DatCur;
 
