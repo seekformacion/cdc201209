@@ -44,7 +44,7 @@ $queryp= "select * from skv_cursos where id=$idcur;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 
-$DatCur[nombre]=$row[nombre];
+$DatCur=$row;
 }
 
 if (!$dbnivel->close()){die($dbnivel->error());};
