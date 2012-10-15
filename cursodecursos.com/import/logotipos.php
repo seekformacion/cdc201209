@@ -47,7 +47,7 @@ $content2 = file_get_contents("http://procenet:nuevaof21@82.223.155.233:81/logos
 $fp = fopen($paths[www] . "/logos/mediun/$nombre."  . $ext, "w");
 fwrite($fp, $content2); fclose($fp);
 
-$queryp= "update import_centro set logos=1 where id=$idseek;";
+$queryp= "update import_centro set logos=1 where idseek=$idseek;";
 $dbnivel->query($queryp);
 
 $queryp= "update skv_centros set file_logo='$nombre.$ext' where id=$idseek;";
