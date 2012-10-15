@@ -265,11 +265,11 @@ $codigo2="";
 $codigo="";
 
 
-if(count($minicodigo)>0){foreach ($minicodigo[$que2] as $lineac){$codigo .=$lineac;};};
+if(count($minicodigo) > 0){foreach ($minicodigo[$que2] as $lineac){$codigo .=$lineac;};};
 
 
 
-if(count($valores)>0){foreach($valores as $cual){
+if(count($valores) > 0){ foreach($valores as $cual){
 	
 $codigo2 .=$codigo;
 foreach($cual as $key => $valor){
