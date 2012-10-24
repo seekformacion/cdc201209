@@ -18,8 +18,8 @@ $seekforID=strtoupper(getUniqueCode(10));
 
 $dbnivel=new DB($conf[host],$conf[usr],$conf[pass],$conf[db]);
 if (!$dbnivel->open()){die($dbnivel->error());};
-$queryp= "SELECT idseek, idofer, cproce from import_centro where cproce < ctotal limit 1;";
-#$dbnivel->query($queryp);
+$queryp= "INSERT INTO skv_user_sessions (seekforID) values ('$seekforID');";
+$dbnivel->query($queryp);
 if (!$dbnivel->close()){die($dbnivel->error());};
 
 return $seekforID;

@@ -1,19 +1,29 @@
-<?php 
+<html>
+<head>
+   <title>Prueba de cookies remotas</title>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+<script> 
+$(document).ready(function() {
 
+	var surl =  "http://www.seekformacion.com/remotes/session.php?callback=?"; 
+	var me = $(this); 
+	$.getJSON(surl,  function(rtndata) { 
+		alert(rtndata.message);
 
-?>
-
-
-<script language="JavaScript" src="http://www.iplocationtools.com/iplocationtools.js?key=6a657e7c6c65716a7a7c627e663962667d"></script>
-
-<fieldset>
-<legend>Ejemplo de geolocalizacion</legend>
-Hola, creo que estas en:
-
-<script language="JavaScript">
-document.write(ip2location_city() + ', ' + ip2location_region() + ', ' + ip2location_country_long() + ', ' + ip2location_zip_code());
+ });
+ 
+}); 
 </script>
 
-</fieldset>
+
+</head>
+<body>
+
+
+
+
+</body>
+</html> 
 	
