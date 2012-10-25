@@ -31,15 +31,7 @@ function checkCookie()
 {
 var cookie=getCookie("seekforID");
   if (cookie!=null && cookie!="")
-  {
-  exit();
-  }
-else
-  {
-    
-    getremotecookie();
-    
-  }
+  {}else{getremotecookie();}
 }
 
 
